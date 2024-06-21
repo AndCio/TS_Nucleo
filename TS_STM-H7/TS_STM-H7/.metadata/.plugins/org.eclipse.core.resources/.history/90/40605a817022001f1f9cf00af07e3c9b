@@ -1,0 +1,182 @@
+/*
+ * total_station_interface.c
+ *
+ *  Created on: May 11, 2024
+ *      Author: Andrea.Cioncolini
+ */
+
+#include "stm32h7xx_hal.h"
+#include <stdio.h>
+#include <string.h>
+#include <stdbool.h>
+#include <math.h>
+#include <usbd_cdc_if.h>
+#include <nuc_connection.h>
+//#include "fatfs.h"
+
+extern TIM_HandleTypeDef htim16;
+int first_search=1;
+char stop_distance_command[16]="%R8Q,2:\r";
+char prism_search_command [16]="%R8Q,6:1\r";
+char complete_prism_search_command [16]="%R8Q,6:2\r";
+//char get_time_stamp_command [19]="%R8Q,8,1:";
+char get_time_stamp_command [19]="%R8Q,8:";
+char start_stream_command [16]="%R8Q,4:\r";
+char stop_stream_command [16]="%R8Q,5:\r";
+char *time_stamp_TS_buffer;
+char start_distance_command [16]="%R8Q,1:\r";
+
+uint8_t ts_time_stamp_buffer[50];
+
+//extern UART_BUFFER_SIZE;
+int UART_BUFFER_SIZE=16;
+extern char *buffer_tx;
+extern uint8_t uartBuffer[];
+extern uint8_t stream_buffer[];
+//extern FIL         fil;                  //File handle
+extern char *stream_sd_card;
+extern char *nuc_time_stamp;
+extern char *complete_time_stamp;
+extern int saving_data_flag,start_stream_flag,stop_stream_complete;
+extern int ctrl;
+
+extern int stop_measure_flag;
+extern UART_HandleTypeDef huart1;
+
+int search_prism(int search_prism_flag){
+	while (search_prism_flag==1){
+		if (first_search==1)
+			{
+			  buffer_tx= prism_search_command;
+			 }
+		else
+			 {
+			  buffer_tx= complete_prism_search_command;
+			 }
+		//*ptr_uart_buffer= &uartBuffer[0];
+
+		HAL_UART_Transmit(&huart1, (uint8_t *)buffer_tx, UART_BUFFER_SIZE,UART_BUFFER_SIZE);
+		HAL_UART_Receive(&huart1, (uint8_t *)&uartBuffer, UART_BUFFER_SIZE,10000);
+		//HAL_Delay(10000);
+		//strcpy(&uartBuffer,zero_buffer);
+		//control[0]=uartBuffer[9];
+		//control[1]=uartBuffer[10];
+		sscanf(&uartBuffer[9],"%d",& ctrl);
+		//memset((uint8_t *)&uartBuffer,0,sizeof(uartBuffer)); //Clear buffer
+		memset((uint8_t *)&uartBuffer,1,UART_BUFFER_SIZE); //Clear buffer
+		//memset((uint8_t *)&uartBuffer,0,sizeof(uartBuffer));
+		if (ctrl==0){ //(control[0]=='0' && control[1]=='0')
+						//printf(uartBuffer);
+			printf("\nPrism locked \r\n"); //
+			search_prism_flag=0;
+			return search_prism_flag;
+		}
+		else if (ctrl==31){
+			printf(uartBuffer);
+			printf("\n Prism not found \r\n"); //
+			first_search=0;
+		}
+		else
+		{
+			printf(uartBuffer);
+			printf("\n errore \r\n"); //
+			first_search=0;
+		}
+	}
+
+}
+void start_distance(){
+	buffer_tx=start_distance_command;
+	HAL_UART_Transmit(&huart1, (uint8_t *)buffer_tx, UART_BUFFER_SIZE,UART_BUFFER_SIZE);
+	HAL_UART_Receive(&huart1, (uint8_t *)&uartBuffer, UART_BUFFER_SIZE,1000);
+	sscanf(&uartBuffer[9],"%d",& ctrl);
+	memset((uint8_t *)&uartBuffer,1,UART_BUFFER_SIZE); //Clear buffer
+	//memset((uint8_t *)&uartBuffer,0,sizeof(uartBuffer));
+	if (ctrl==0){ //(control[0]=='0' && control[1]=='0')
+					//printf(uartBuffer);
+		printf("\n Distance measured \r\n"); //
+	}
+}
+
+void get_TS_time_stamp(){
+	// Salva il valore iniziale del contatore
+	uint32_t start_andata = __HAL_TIM_GET_COUNTER(&htim16);
+	get_nuc_time_stamp();
+	strcat(nuc_time_stamp, "\r");
+	strcat(get_time_stamp_command, nuc_time_stamp);
+	//buffer_tx=get_time_stamp_command;
+	//sprintf(buffer_tx, "%c", nuc_time_stamp);
+	//printf((char *)get_time_stamp_command);
+	// Salva il valore finale del contatore
+	uint32_t end_andata = __HAL_TIM_GET_COUNTER(&htim16);
+	// Calcola il tempo di esecuzione in microsecondi
+	uint32_t time_andata = end_andata - start_andata;
+	HAL_UART_Transmit(&huart1, (uint8_t *)get_time_stamp_command, 19,19);
+	HAL_UART_Receive(&huart1, (uint8_t *)&ts_time_stamp_buffer, 50,500);
+	uint32_t start_ritorno = __HAL_TIM_GET_COUNTER(&htim16);
+
+	time_stamp_TS_buffer=ts_time_stamp_buffer;
+	uint32_t end_ritorno = __HAL_TIM_GET_COUNTER(&htim16);
+	uint32_t time_ritorno = end_ritorno - start_ritorno;
+	int delta_time=time_ritorno-time_andata;
+	HAL_Delay(delta_time);
+	send_complete_time_stamp(time_stamp_TS_buffer);
+	time_ritorno=time_ritorno+delta_time;
+	printf("Tempo di andata=%i  Tempo di ritorno= %i  tempo compensato=%i"  , time_andata, time_ritorno, delta_time);
+
+}
+
+void start_measure( ){
+
+		int flag_stream_started=0;
+		while (flag_stream_started==0){
+		buffer_tx=start_stream_command;
+		//HAL_UART_Receive_DMA(&huart1, (uint8_t *)&stream_buffer, 103);
+		HAL_UART_Transmit(&huart1, (uint8_t *)buffer_tx, UART_BUFFER_SIZE,UART_BUFFER_SIZE);
+		HAL_UART_Receive(&huart1, (uint8_t *)&stream_buffer, 10,500);
+		sscanf(&stream_buffer[9],"%d",& ctrl);
+		//memset((uint8_t *)&uartBuffer,1,UART_BUFFER_SIZE); //Clear buffer
+			//memset((uint8_t *)&uartBuffer,0,sizeof(uartBuffer));
+			if (ctrl==0){ //(control[0]=='0' && control[1]=='0')							//printf(uartBuffer);
+				flag_stream_started=1;
+				printf("\nStream started \r\n"); //
+			}
+			else if (ctrl==51){
+				printf("\nStream already started --> stop stream and retry to start stream\r\n");
+				buffer_tx=stop_stream_command;
+				HAL_UART_Transmit(&huart1, (uint8_t *)buffer_tx, UART_BUFFER_SIZE,UART_BUFFER_SIZE);
+			}
+			else {
+				printf("\n  ctrl = %d \r\n",ctrl);
+			}
+		}
+		//return stop_measure_flag; // if 1 stop measure, if 0 change file
+}
+
+void saving_data(){
+	/*
+	stream_sd_card=(char *)uartBuffer;
+	strcat(stream_sd_card,"\n");
+	f_puts(stream_sd_card, &fil);
+	return start_stream_flag=1;
+
+	if (__HAL_TIM_GET_COUNTER(&htim16) - timer_time_1 >= (uint16_t) 1000)
+	{
+		  //HAL_GPIO_TogglePin(GPIOE, GPIO_PIN_1); // LED_YELLOW
+		  timer_time_1 =__HAL_TIM_GET_COUNTER(&htim16);
+		  time_stream=0;
+	}
+	*/
+}
+
+void stop_measure(){
+	buffer_tx=stop_stream_command;
+	HAL_UART_Transmit(&huart1, (uint8_t *)buffer_tx, UART_BUFFER_SIZE,UART_BUFFER_SIZE);
+	memset((uint8_t *)&uartBuffer,0,UART_BUFFER_SIZE);
+	HAL_UART_Receive(&huart1, (uint8_t *)&uartBuffer, UART_BUFFER_SIZE,100);
+	sscanf(&uartBuffer[9],"%d",& ctrl);
+	memset((uint8_t *)&uartBuffer,0,UART_BUFFER_SIZE); //Clear buffer
+	if (ctrl==0) {
+		stop_stream_complete=1;
+	}
+}

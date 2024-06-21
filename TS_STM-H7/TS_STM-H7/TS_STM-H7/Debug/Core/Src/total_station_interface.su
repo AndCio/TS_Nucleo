@@ -1,0 +1,6 @@
+../Core/Src/total_station_interface.c:55:5:search_prism	16	static
+../Core/Src/total_station_interface.c:97:6:start_distance	8	static
+../Core/Src/total_station_interface.c:110:9:get_TS_time_stamp	72	static
+../Core/Src/total_station_interface.c:142:6:start_measure	16	static
+../Core/Src/total_station_interface.c:170:6:saving_data	4	static
+../Core/Src/total_station_interface.c:186:6:stop_measure	8	static

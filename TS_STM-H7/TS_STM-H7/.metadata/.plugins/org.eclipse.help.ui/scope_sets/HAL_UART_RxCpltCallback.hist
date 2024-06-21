@@ -1,0 +1,4 @@
+#Tue May 21 19:20:59 CEST 2024
+expression=HAL_UART_RxCpltCallback
+org.eclipse.help.ui.localSearch.master=true
+__DEFAULT__=false

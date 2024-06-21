@@ -1,0 +1,10 @@
+18:05:19 **** Incremental Build of configuration Debug for project TS_STM-H7 ****
+make -j8 all 
+arm-none-eabi-size  TS_STM-H7.elf 
+   text	   data	    bss	    dec	    hex	filename
+  94876	    624	  21000	 116500	  1c714	TS_STM-H7.elf
+Finished building: default.size.stdout
+ 
+
+18:05:19 Build Finished. 0 errors, 0 warnings. (took 297ms)
+

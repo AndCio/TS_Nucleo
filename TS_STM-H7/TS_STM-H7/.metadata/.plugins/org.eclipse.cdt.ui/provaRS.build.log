@@ -1,0 +1,10 @@
+15:17:01 **** Incremental Build of configuration Debug for project provaRS ****
+make -j8 all 
+arm-none-eabi-size  provaRS.elf 
+   text	   data	    bss	    dec	    hex	filename
+  36904	     80	   1976	  38960	   9830	provaRS.elf
+Finished building: default.size.stdout
+ 
+
+15:17:01 Build Finished. 0 errors, 0 warnings. (took 194ms)
+
