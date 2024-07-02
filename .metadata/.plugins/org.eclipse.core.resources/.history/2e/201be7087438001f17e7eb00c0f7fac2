@@ -210,17 +210,9 @@ int main(void)
     /* USER CODE BEGIN 3 */
 
 	  if (nuc_connection==1){
-		  int wait_for_nuc_connection=1;
-		  HAL_Delay(2000);
-		  HAL_GPIO_WritePin(GPIOD, GPIO_PIN_7, RESET); //Panel Green LED
-		  while (wait_for_nuc_connection==1){
-		  if (HAL_GPIO_ReadPin(GPIOF, GPIO_PIN_8)==0){
-			  wait_for_nuc_connection=0;
-		  	  }
-		  }
+		  HAL_Delay(1000);
 		  HAL_GPIO_WritePin(GPIOD, GPIO_PIN_7, SET); //Panel Green LED
 		  get_file_name();
-
 
 		  //get_file_name( rx_usb);
 		  nuc_connection=0;
@@ -770,7 +762,7 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
-
+// Gestione dell'interrupt esterno per PA0
 
 void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef *huart, uint16_t Size) {
 	if (huart->Instance == USART1) {  // Controlla che sia la tua UART

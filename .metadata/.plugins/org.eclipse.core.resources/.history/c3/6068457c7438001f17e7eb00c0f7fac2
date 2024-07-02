@@ -32,6 +32,10 @@ void get_file_name (){ //(uint8_t rx_usb[])
 	memset((uint8_t *)&rx_usb,0,size_rx_usb);
 	CDC_Transmit_HS((uint8_t*)tx_usb_to_nuc,strlen(tx_usb_to_nuc));
 	while (rx_usb[0]==0){
+		if (HAL_GPIO_ReadPin(GPIOF, GPIO_PIN_8)==0){
+			CDC_Transmit_HS((uint8_t*)tx_usb_to_nuc,strlen(tx_usb_to_nuc));
+			HAL_Delay(1000);
+		}
 		HAL_Delay(1000);
 	 }
 	rx_usb_pointer=(char *) rx_usb;

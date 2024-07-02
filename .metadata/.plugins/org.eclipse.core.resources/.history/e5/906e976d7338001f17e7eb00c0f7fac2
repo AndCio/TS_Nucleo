@@ -183,6 +183,11 @@ int main(void)
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
 
+  HAL_NVIC_SetPriority(EXTI0_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(EXTI0_IRQn);
+
+
+
   HAL_TIM_Base_Start(&htim16); //START TIMER
   int num_file=0;
   int open_new_file=1;
@@ -203,6 +208,19 @@ int main(void)
   //timer_time_2=0;
 
 
+  void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
+  {
+      if(GPIO_Pin == GPIO_PIN_8)
+      {
+    	  printf("\nSystem Reset\r\n");
+    	  f_close(&fil); // close file.txt
+    	  NVIC_SystemReset();
+          // Codice da eseguire quando l'interrupt è generato sul pin PF8
+      }
+  }
+
+
+
   while (1)
   {
     /* USER CODE END WHILE */
@@ -210,17 +228,9 @@ int main(void)
     /* USER CODE BEGIN 3 */
 
 	  if (nuc_connection==1){
-		  int wait_for_nuc_connection=1;
-		  HAL_Delay(2000);
-		  HAL_GPIO_WritePin(GPIOD, GPIO_PIN_7, RESET); //Panel Green LED
-		  while (wait_for_nuc_connection==1){
-		  if (HAL_GPIO_ReadPin(GPIOF, GPIO_PIN_8)==0){
-			  wait_for_nuc_connection=0;
-		  	  }
-		  }
+		  HAL_Delay(1000);
 		  HAL_GPIO_WritePin(GPIOD, GPIO_PIN_7, SET); //Panel Green LED
 		  get_file_name();
-
 
 		  //get_file_name( rx_usb);
 		  nuc_connection=0;
@@ -700,7 +710,7 @@ static void MX_GPIO_Init(void)
 
   /*Configure GPIO pins : PF8 PF10 */
   GPIO_InitStruct.Pin = GPIO_PIN_8|GPIO_PIN_10;
-  GPIO_InitStruct.Mode = GPIO_MODE_IT_FALLING;//GPIO_InitStruct.Mode = GPIO_MODE_INPUT; AC modifica 02/07/2024
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_PULLUP;
   HAL_GPIO_Init(GPIOF, &GPIO_InitStruct);
 
@@ -770,8 +780,11 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
-
-
+// Gestione dell'interrupt esterno per PA0
+void EXTI0_IRQHandler(void)
+{
+    HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_8);
+}
 void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef *huart, uint16_t Size) {
 	if (huart->Instance == USART1) {  // Controlla che sia la tua UART
 			//stream_sd_card=(char *)dma_buffer;
