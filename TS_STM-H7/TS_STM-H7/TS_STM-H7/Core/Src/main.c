@@ -61,7 +61,7 @@ DMA_HandleTypeDef hdma_usart1_tx;
 
 /* USER CODE BEGIN PV */
 #define 	UART_BUFFER_SIZE 64
-#define 	STREAM_SIZE 150
+#define 	STREAM_SIZE 130
 //__IO uint8_t uartBuffer[UART_BUFFER_SIZE];
 //char uartBuffer[UART_BUFFER_SIZE];
 /* USER CODE END PV */
@@ -194,10 +194,10 @@ int main(void)
   memset((uint8_t *)&uartBuffer,1,UART_BUFFER_SIZE);
   //int timer_time_1;
   HAL_GPIO_TogglePin(GPIOE, GPIO_PIN_1);
-  //HAL_GPIO_WritePin(GPIOD, GPIO_PIN_7, SET); //Panel Green LED
+  HAL_GPIO_WritePin(GPIOD, GPIO_PIN_7, SET); //Panel Green LED
   HAL_GPIO_WritePin(GPIOD, GPIO_PIN_6, RESET); //GND
-  //HAL_GPIO_WritePin(GPIOD, GPIO_PIN_5, SET); //Panel Yellow LED
-  HAL_GPIO_WritePin(GPIOD, GPIO_PIN_4, RESET); //GND
+  HAL_GPIO_WritePin(GPIOD, GPIO_PIN_5, RESET); //GND
+  //HAL_GPIO_WritePin(GPIOD, GPIO_PIN_4, RESET); //Panel Yellow LED
   //HAL_GPIO_WritePin(GPIOD, GPIO_PIN_3, SET); //Panel Red LED
   //timer_time_1=0;
   //timer_time_2=0;
@@ -255,7 +255,7 @@ int main(void)
 	  	  case 4: //Start-Measure and Save Data
 	  	  {
 	  		    HAL_GPIO_WritePin(GPIOD, GPIO_PIN_7, RESET);
-	  		  	HAL_GPIO_WritePin(GPIOD, GPIO_PIN_5, SET);
+	  		  	HAL_GPIO_WritePin(GPIOD, GPIO_PIN_4, SET);
 				start_stream_flag=1;
 				break;
 	  	  }
@@ -266,7 +266,7 @@ int main(void)
 		  }
 	  	  case 6: //Stop-Measure
 		  {
-			    HAL_GPIO_WritePin(GPIOD, GPIO_PIN_5, RESET);
+			    HAL_GPIO_WritePin(GPIOD, GPIO_PIN_4, RESET);
 			    HAL_GPIO_WritePin(GPIOD, GPIO_PIN_3, SET);
 			    stop_measure_flag=1;
 				break;
@@ -311,6 +311,7 @@ int main(void)
 	  if (start_stream_flag==1){
 		   if (stream_started_flag==0){
 			   //HAL_Delay(5000);
+			   //fres = f_open(&fil,nome_file_txt, FA_WRITE | FA_OPEN_APPEND);
 			   start_measure();
 			   stream_started_flag=1;
 		   }
@@ -323,7 +324,9 @@ int main(void)
 		   //HAL_UART_Receive_DMA(&huart1, (uint8_t *)&stream_buffer, STREAM_SIZE);
 		   //HAL_UARTEx_GetRxEventType(&huart1);
 		   //__HAL_DMA_DISABLE_IT();
+		   fres = f_open(&fil,nome_file_txt, FA_WRITE | FA_OPEN_APPEND);
 		   while (start_stream_flag==1 && change_file==0){
+
 			   HAL_UARTEx_ReceiveToIdle_IT(&huart1, dma_buffer, STREAM_SIZE);
 			   /*
 			   HAL_UART_Receive_IT(&huart1, dma_buffer, STREAM_SIZE);
@@ -335,21 +338,24 @@ int main(void)
 			   if (receive_dma_complete==1){
 				   handle_complete_packet();
 				   point_measured_per_file++;
+
 			   }
-			   HAL_GPIO_TogglePin(GPIOE, GPIO_PIN_1);
+			   //HAL_GPIO_TogglePin(GPIOE, GPIO_PIN_1);
 
 			   	   	//if (__HAL_TIM_GET_COUNTER(&htim16) - timer_time_1 >= (uint16_t) 300  && HAL_UART_Receive_DMA(&huart1, (uint8_t *)&stream_buffer, STREAM_SIZE) != HAL_BUSY){
 
 						//timer_time_1=__HAL_TIM_GET_COUNTER(&htim16);
 			   	   //	}
 					if (HAL_GPIO_ReadPin(GPIOF, GPIO_PIN_8)==0){
+						stop_measure();
 						HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0, RESET); //G
 						HAL_GPIO_WritePin(GPIOE, GPIO_PIN_1, RESET); //Y
-
 						start_stream_flag=0;
 						machine_state=6;
 					}
+
 					// al momento non è implementata la logica cambio file ( non durerà tanto da superare 1GB di file)
+					/*
 					if (point_measured_per_file==max_point_per_file){
 						point_measured_per_file=0;
 						HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0, RESET); //G
@@ -359,11 +365,10 @@ int main(void)
 						start_stream_flag=0;
 						machine_state=6;
 						//HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_14);
-					}
+					}*/
 				}
 	  }
 	  if (stop_measure_flag==1){
-		  stop_measure();
 		  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, SET); //R
 		  printf("\nClosing file\r\n");
 		  f_close(&fil); // close file.txt
@@ -471,7 +476,7 @@ static void MX_SPI2_Init(void)
   hspi2.Init.CLKPolarity = SPI_POLARITY_LOW;
   hspi2.Init.CLKPhase = SPI_PHASE_1EDGE;
   hspi2.Init.NSS = SPI_NSS_SOFT;
-  hspi2.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_64;
+  hspi2.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_2;
   hspi2.Init.FirstBit = SPI_FIRSTBIT_MSB;
   hspi2.Init.TIMode = SPI_TIMODE_DISABLE;
   hspi2.Init.CRCCalculation = SPI_CRCCALCULATION_DISABLE;
@@ -758,23 +763,29 @@ static void MX_GPIO_Init(void)
 
 void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef *huart, uint16_t Size) {
 	if (huart->Instance == USART1) {  // Controlla che sia la tua UART
-			stream_sd_card=(char *)dma_buffer;
+			//stream_sd_card=(char *)dma_buffer;
+
+			memcpy(stream_sd_card,(char *)dma_buffer, sizeof(dma_buffer));
 			contatore_stream++;
-			printf("\n %i Stream DMA Buffer  %s \r\n",contatore_stream,dma_buffer);
+			//printf("\n %i Stream DMA Buffer  %s \r\n",contatore_stream,dma_buffer);
 	        // Riavvia la ricezione DMA per un altro byte
 	        HAL_UARTEx_ReceiveToIdle_IT(&huart1, dma_buffer, STREAM_SIZE);
 	        receive_dma_complete=1;
+
 	}
 }
 
 // Implementa la logica per processare il pacchetto completo
 void handle_complete_packet(void) {
-	fres = f_open(&fil,nome_file_txt, FA_WRITE | FA_OPEN_APPEND);
+
+	//HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_0);
+	//fres = f_open(&fil,nome_file_txt, FA_WRITE | FA_OPEN_APPEND);
 	f_puts(stream_sd_card, &fil);
-	HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_0);
+	//f_close(&fil);
 	printf("\n %i Stream SD Card  %s \r\n",contatore_stream,stream_sd_card);
+	memset(dma_buffer,0,STREAM_SIZE);
 	receive_dma_complete=0;
-	f_close(&fil);
+
 }
 
 #ifdef __GNUC__
@@ -806,7 +817,9 @@ void process_init_SD_card( void )
     if (fres != FR_OK)
     {
       printf("No SD Card found : (%i)\r\n", fres);
-      break;
+      SD_error_message();
+      NVIC_SystemReset();
+      //return;//break;
     }
     printf("SD Card Mounted Successfully!!!\r\n");
 
@@ -824,7 +837,9 @@ void process_init_SD_card( void )
     fres = f_open(&fil, nome_file_txt, FA_WRITE | FA_READ | FA_CREATE_ALWAYS);
     if(fres != FR_OK){
 		  printf("File creation/open Error : (%i)\r\n", fres);
-		  break;
+		  SD_error_message();
+		  NVIC_SystemReset();
+		  //return; //invece di break
     }
     /*
     //Open the file

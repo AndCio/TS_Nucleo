@@ -1,3 +1,5 @@
-../Core/Src/nuc_connection.c:28:6:get_file_name	16	static
-../Core/Src/nuc_connection.c:40:6:get_nuc_time_stamp	16	static
-../Core/Src/nuc_connection.c:53:6:send_complete_time_stamp	24	static
+../Drivers/CMSIS/Include/core_cm7.h:2156:34:__NVIC_SystemReset	4	static,ignoring_inline_asm
+../Core/Src/nuc_connection.c:29:6:get_file_name	16	static
+../Core/Src/nuc_connection.c:45:6:get_nuc_time_stamp	16	static
+../Core/Src/nuc_connection.c:61:6:send_complete_time_stamp	24	static
+../Core/Src/nuc_connection.c:75:6:SD_error_message	16	static

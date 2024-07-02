@@ -17,5 +17,6 @@
 void get_file_name();
 void get_nuc_time_stamp();
 void send_complete_time_stamp (char* time_stamp_TS_buffer);
+void SD_error_message();
 
 #endif /* INC_NUC_CONNECTION_H_ */

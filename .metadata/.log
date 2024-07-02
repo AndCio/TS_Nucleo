@@ -164,3 +164,157 @@ java.lang.IllegalStateException: Call stack for thread main
 
 !ENTRY org.eclipse.equinox.p2.metadata.repository 4 1000 2024-06-21 15:33:05.269
 !MESSAGE No repository found at file:/C:/Users/andre/Downloads/en.stm32cubeh5-v1-1-0/.
+!SESSION 2024-06-26 16:33:30.902 -----------------------------------------------
+eclipse.buildId=Version 1.15.1
+java.version=17.0.8.1
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=it_IT
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2024-06-26 16:33:50.895
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2024-06-26 16:33:50.905
+!MESSAGE Log4j2 initialized with config file C:\Users\andre\Documents\GitHub\TS_Nucleo\.metadata\.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2024-06-26 16:33:57.782
+!MESSAGE Started RMI Server, listening on port 41337
+
+!ENTRY org.eclipse.equinox.p2.metadata.repository 4 1000 2024-06-26 16:34:18.167
+!MESSAGE No repository found at jar:file:/C:/Users/andre/Downloads/en.stm32cubeh7-v1-11-2.zip!/.
+
+!ENTRY org.eclipse.equinox.p2.metadata.repository 4 1000 2024-06-26 16:34:43.463
+!MESSAGE No repository found at file:/C:/Users/andre/Downloads/en.stm32cubeh5-v1-1-0/.
+!SESSION 2024-06-27 16:44:20.977 -----------------------------------------------
+eclipse.buildId=Version 1.15.1
+java.version=17.0.8.1
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=it_IT
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2024-06-27 16:46:05.218
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2024-06-27 16:46:05.225
+!MESSAGE Log4j2 initialized with config file C:\Users\andre\Documents\GitHub\TS_Nucleo\.metadata\.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2024-06-27 16:46:12.061
+!MESSAGE Started RMI Server, listening on port 41337
+
+!ENTRY org.eclipse.equinox.p2.metadata.repository 4 1000 2024-06-27 16:46:32.209
+!MESSAGE No repository found at jar:file:/C:/Users/andre/Downloads/en.stm32cubeh7-v1-11-2.zip!/.
+!SESSION 2024-06-28 14:43:50.378 -----------------------------------------------
+eclipse.buildId=Version 1.15.1
+java.version=17.0.8.1
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=it_IT
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2024-06-28 14:44:13.245
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2024-06-28 14:44:13.260
+!MESSAGE Log4j2 initialized with config file C:\Users\andre\Documents\GitHub\TS_Nucleo\.metadata\.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2024-06-28 14:44:20.165
+!MESSAGE Started RMI Server, listening on port 41337
+
+!ENTRY org.eclipse.equinox.p2.metadata.repository 4 1000 2024-06-28 14:44:40.237
+!MESSAGE No repository found at jar:file:/C:/Users/andre/Downloads/en.stm32cubeh7-v1-11-2.zip!/.
+
+!ENTRY org.eclipse.equinox.p2.metadata.repository 4 1000 2024-06-28 14:45:00.913
+!MESSAGE No repository found at file:/C:/Users/andre/Downloads/en.stm32cubeh5-v1-1-0/.
+
+!ENTRY org.eclipse.cdt.dsf.gdb 4 104 2024-06-28 17:51:26.928
+!MESSAGE Program file does not exist
+!STACK 0
+java.io.FileNotFoundException: C:\Users\andre\Documents\GitHub\TS_Nucleo\TS_STM-H7\TS_STM-H7\TS_STM-H7\Debug\TS_STM-H7.elf not found
+	at org.eclipse.cdt.dsf.gdb.launching.LaunchUtils.verifyProgramPath(LaunchUtils.java:130)
+	at org.eclipse.cdt.dsf.gdb.launching.GdbLaunchDelegate.checkBinaryDetails(GdbLaunchDelegate.java:330)
+	at org.eclipse.cdt.dsf.gdb.launching.GdbLaunchDelegate.launchDebugSession(GdbLaunchDelegate.java:152)
+	at org.eclipse.cdt.dsf.gdb.launching.GdbLaunchDelegate.launchDebugger(GdbLaunchDelegate.java:109)
+	at org.eclipse.cdt.dsf.gdb.launching.GdbLaunchDelegate.launch(GdbLaunchDelegate.java:97)
+	at com.st.stm32cube.ide.mcu.debug.launch.DSFDelegate.launch(DSFDelegate.java:334)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:805)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:716)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:1040)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$1.run(DebugUIPlugin.java:1243)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 104 2024-06-28 17:51:26.928
+!MESSAGE C:\Users\andre\Documents\GitHub\TS_Nucleo\TS_STM-H7\TS_STM-H7\TS_STM-H7\Debug\TS_STM-H7.elf not found
+!STACK 0
+java.io.FileNotFoundException: C:\Users\andre\Documents\GitHub\TS_Nucleo\TS_STM-H7\TS_STM-H7\TS_STM-H7\Debug\TS_STM-H7.elf not found
+	at org.eclipse.cdt.dsf.gdb.launching.LaunchUtils.verifyProgramPath(LaunchUtils.java:130)
+	at org.eclipse.cdt.dsf.gdb.launching.GdbLaunchDelegate.checkBinaryDetails(GdbLaunchDelegate.java:330)
+	at org.eclipse.cdt.dsf.gdb.launching.GdbLaunchDelegate.launchDebugSession(GdbLaunchDelegate.java:152)
+	at org.eclipse.cdt.dsf.gdb.launching.GdbLaunchDelegate.launchDebugger(GdbLaunchDelegate.java:109)
+	at org.eclipse.cdt.dsf.gdb.launching.GdbLaunchDelegate.launch(GdbLaunchDelegate.java:97)
+	at com.st.stm32cube.ide.mcu.debug.launch.DSFDelegate.launch(DSFDelegate.java:334)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:805)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:716)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:1040)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$1.run(DebugUIPlugin.java:1243)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+!SESSION 2024-06-28 23:04:57.249 -----------------------------------------------
+eclipse.buildId=Version 1.15.1
+java.version=17.0.8.1
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=it_IT
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2024-06-28 23:05:06.484
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2024-06-28 23:05:06.494
+!MESSAGE Log4j2 initialized with config file C:\Users\andre\Documents\GitHub\TS_Nucleo\.metadata\.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2024-06-28 23:05:14.688
+!MESSAGE Started RMI Server, listening on port 41337
+
+!ENTRY org.eclipse.equinox.p2.metadata.repository 4 1000 2024-06-28 23:05:36.978
+!MESSAGE No repository found at jar:file:/C:/Users/andre/Downloads/en.stm32cubeh7-v1-11-2.zip!/.
+
+!ENTRY org.eclipse.equinox.p2.metadata.repository 4 1000 2024-06-28 23:06:18.099
+!MESSAGE No repository found at file:/C:/Users/andre/Downloads/en.stm32cubeh5-v1-1-0/.
+!SESSION 2024-07-01 10:41:34.209 -----------------------------------------------
+eclipse.buildId=Version 1.15.1
+java.version=17.0.8.1
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=it_IT
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2024-07-01 10:42:04.617
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2024-07-01 10:42:04.632
+!MESSAGE Log4j2 initialized with config file C:\Users\andre\Documents\GitHub\TS_Nucleo\.metadata\.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2024-07-01 10:42:12.868
+!MESSAGE Started RMI Server, listening on port 41337
+
+!ENTRY org.eclipse.equinox.p2.metadata.repository 4 1000 2024-07-01 10:42:33.363
+!MESSAGE No repository found at jar:file:/C:/Users/andre/Downloads/en.stm32cubeh7-v1-11-2.zip!/.
+
+!ENTRY org.eclipse.equinox.p2.metadata.repository 4 1000 2024-07-01 10:42:58.097
+!MESSAGE No repository found at file:/C:/Users/andre/Downloads/en.stm32cubeh5-v1-1-0/.
+!SESSION 2024-07-02 09:49:57.352 -----------------------------------------------
+eclipse.buildId=Version 1.15.1
+java.version=17.0.8.1
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=it_IT
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2024-07-02 09:50:22.884
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2024-07-02 09:50:22.891
+!MESSAGE Log4j2 initialized with config file C:\Users\andre\Documents\GitHub\TS_Nucleo\.metadata\.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2024-07-02 09:50:31.393
+!MESSAGE Started RMI Server, listening on port 41337
+
+!ENTRY org.eclipse.equinox.p2.metadata.repository 4 1000 2024-07-02 09:50:52.038
+!MESSAGE No repository found at jar:file:/C:/Users/andre/Downloads/en.stm32cubeh7-v1-11-2.zip!/.
+
+!ENTRY org.eclipse.equinox.p2.metadata.repository 4 1000 2024-07-02 09:51:16.406
+!MESSAGE No repository found at file:/C:/Users/andre/Downloads/en.stm32cubeh5-v1-1-0/.

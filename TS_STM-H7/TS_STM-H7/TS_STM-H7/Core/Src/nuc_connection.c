@@ -21,6 +21,7 @@ char 	*rx_usb_pointer;
 char 	*complete_time_stamp;
 char 	file_name_request[64]="%file_name_request";//"write file_name(senza estensione)\r";
 char 	time_stamp_request[64]="%time_stamp_request";//"send nuc time stamp\r";
+char 	SD_error_msg[64]="SD not Monted";
 extern 	uint8_t rx_usb[];
 extern 	int size_rx_usb;
 
@@ -31,6 +32,10 @@ void get_file_name (){ //(uint8_t rx_usb[])
 	memset((uint8_t *)&rx_usb,0,size_rx_usb);
 	CDC_Transmit_HS((uint8_t*)tx_usb_to_nuc,strlen(tx_usb_to_nuc));
 	while (rx_usb[0]==0){
+		if (HAL_GPIO_ReadPin(GPIOF, GPIO_PIN_8)==0){
+			CDC_Transmit_HS((uint8_t*)tx_usb_to_nuc,strlen(tx_usb_to_nuc));
+			HAL_Delay(1000);
+		}
 		HAL_Delay(1000);
 	 }
 	rx_usb_pointer=(char *) rx_usb;
@@ -42,6 +47,9 @@ void get_nuc_time_stamp(){
 	  //memset((uint8_t *)&rx_usb,1,size_rx_usb);
 	  CDC_Transmit_HS((uint8_t*)tx_usb_to_nuc,strlen(tx_usb_to_nuc));
 	  while (rx_usb[0]==0){
+		  if (HAL_GPIO_ReadPin(GPIOF, GPIO_PIN_8)==0){
+		  	  NVIC_SystemReset();
+		  	}
 	  		HAL_Delay(100);
 	  	 }
 	  rx_usb_pointer=(char *) rx_usb;
@@ -62,4 +70,10 @@ void send_complete_time_stamp(char* time_stamp_TS_buffer){
 	//rx_usb_pointer=NULL;
 	//memset((uint8_t *)&rx_usb,0,size_rx_usb);
 
+}
+
+void SD_error_message(){
+	  tx_usb_to_nuc=SD_error_msg;
+	  //memset((uint8_t *)&rx_usb,1,size_rx_usb);
+	  CDC_Transmit_HS((uint8_t*)tx_usb_to_nuc,strlen(tx_usb_to_nuc));
 }
