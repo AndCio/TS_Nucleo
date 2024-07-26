@@ -1,15 +1,52 @@
-15:19:41 **** Incremental Build of configuration Debug for project TS_STM-H7 ****
+16:19:59 **** Incremental Build of configuration Debug for project TS_STM-H7 ****
 make -j8 all 
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H723xx -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -I../FATFS/Target -I../FATFS/App -I../Middlewares/Third_Party/FatFs/src -I../USB_DEVICE/App -I../USB_DEVICE/Target -I../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc "../Core/Src/total_station_interface.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H723xx -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -I../FATFS/Target -I../FATFS/App -I../Middlewares/Third_Party/FatFs/src -I../USB_DEVICE/App -I../USB_DEVICE/Target -I../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/total_station_interface.d" -MT"Core/Src/total_station_interface.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/total_station_interface.o"
+../Core/Src/total_station_interface.c: In function 'search_prism':
+../Core/Src/total_station_interface.c:73:24: warning: pointer targets in passing argument 1 of 'sscanf' differ in signedness [-Wpointer-sign]
+   73 |                 sscanf(&uartBuffer[9],"%d",& ctrl);
+      |                        ^~~~~~~~~~~~~~
+      |                        |
+      |                        uint8_t * {aka unsigned char *}
+In file included from ../Core/Src/total_station_interface.c:9:
+C:\ST\STM32CubeIDE_1.14.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.100.202403111256\tools\bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/include/stdio.h:210:17: note: expected 'const char * restrict' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+  210 | int     sscanf (const char *__restrict, const char *__restrict, ...)
+      |                 ^
+../Core/Src/total_station_interface.c:84:32: warning: pointer targets in passing argument 1 of 'printf' differ in signedness [-Wpointer-sign]
+   84 |                         printf(uartBuffer);
+      |                                ^~~~~~~~~~
+      |                                |
+      |                                uint8_t * {aka unsigned char *}
+C:\ST\STM32CubeIDE_1.14.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.100.202403111256\tools\bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/include/stdio.h:206:17: note: expected 'const char * restrict' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+  206 | int     printf (const char *__restrict, ...)
+      |                 ^
+../Core/Src/total_station_interface.c:90:32: warning: pointer targets in passing argument 1 of 'printf' differ in signedness [-Wpointer-sign]
+   90 |                         printf(uartBuffer);
+      |                                ^~~~~~~~~~
+      |                                |
+      |                                uint8_t * {aka unsigned char *}
+C:\ST\STM32CubeIDE_1.14.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.100.202403111256\tools\bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/include/stdio.h:206:17: note: expected 'const char * restrict' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+  206 | int     printf (const char *__restrict, ...)
+      |                 ^
+../Core/Src/total_station_interface.c: In function 'start_distance':
+../Core/Src/total_station_interface.c:101:16: warning: pointer targets in passing argument 1 of 'sscanf' differ in signedness [-Wpointer-sign]
+  101 |         sscanf(&uartBuffer[9],"%d",& ctrl);
+      |                ^~~~~~~~~~~~~~
+      |                |
+      |                uint8_t * {aka unsigned char *}
 ../Core/Src/main.c: In function 'main':
-../Core/Src/main.c:216:26: warning: suggest parentheses around assignment used as truth value [-Wparentheses]
-  216 |                   while (wait_for_nuc_connection=1){
-      |                          ^~~~~~~~~~~~~~~~~~~~~~~
-../Core/Src/main.c:233:27: warning: passing argument 1 of 'sprintf' makes pointer from integer without a cast [-Wint-conversion]
-  233 |                   sprintf(progressive_number, "_%d", num_file);
+C:\ST\STM32CubeIDE_1.14.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.100.202403111256\tools\bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/include/stdio.h:210:17: note: expected 'const char * restrict' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+  210 | int     sscanf (const char *__restrict, const char *__restrict, ...)
+      |                 ^
+../Core/Src/main.c:236:27: warning: passing argument 1 of 'sprintf' makes pointer from integer without a cast [-Wint-conversion]
+  236 |                   sprintf(progressive_number, "_%d", num_file);
       |                           ^~~~~~~~~~~~~~~~~~
       |                           |
       |                           char
+../Core/Src/total_station_interface.c: In function 'get_TS_time_stamp':
+../Core/Src/total_station_interface.c:134:29: warning: pointer targets in assignment from 'uint8_t *' {aka 'unsigned char *'} to 'char *' differ in signedness [-Wpointer-sign]
+  134 |         time_stamp_TS_buffer=ts_time_stamp_buffer;
+      |                             ^
 In file included from ../USB_DEVICE/Target/usbd_conf.h:30,
                  from ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h:28,
                  from ../USB_DEVICE/App/usb_device.h:32,
@@ -17,139 +54,388 @@ In file included from ../USB_DEVICE/Target/usbd_conf.h:30,
 C:\ST\STM32CubeIDE_1.14.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.100.202403111256\tools\bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/include/stdio.h:250:18: note: expected 'char * restrict' but argument is of type 'char'
   250 | int     sprintf (char *__restrict, const char *__restrict, ...)
       |                  ^
-../Core/Src/main.c:234:26: warning: passing argument 1 of 'strcat' makes pointer from integer without a cast [-Wint-conversion]
-  234 |                   strcat(progressive_number,".txt");
+../Core/Src/total_station_interface.c: In function 'start_measure':
+../Core/Src/main.c:237:26: warning: passing argument 1 of 'strcat' makes pointer from integer without a cast [-Wint-conversion]
+  237 |                   strcat(progressive_number,".txt");
       |                          ^~~~~~~~~~~~~~~~~~
       |                          |
       |                          char
+../Core/Src/total_station_interface.c:159:24: warning: pointer targets in passing argument 1 of 'sscanf' differ in signedness [-Wpointer-sign]
+  159 |                 sscanf(&stream_buffer[9],"%d",& ctrl);
+      |                        ^~~~~~~~~~~~~~~~~
+      |                        |
+      |                        uint8_t * {aka unsigned char *}
 In file included from ../USB_DEVICE/Target/usbd_conf.h:32:
 C:\ST\STM32CubeIDE_1.14.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.100.202403111256\tools\bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/include/string.h:34:18: note: expected 'char * restrict' but argument is of type 'char'
    34 | char    *strcat (char *__restrict, const char *__restrict);
       |                  ^
-../Core/Src/main.c:236:40: warning: passing argument 2 of 'strcat' makes pointer from integer without a cast [-Wint-conversion]
-  236 |                   strcat(nome_file_txt,progressive_number);
+C:\ST\STM32CubeIDE_1.14.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.100.202403111256\tools\bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/include/stdio.h:210:17: note: expected 'const char * restrict' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+  210 | int     sscanf (const char *__restrict, const char *__restrict, ...)
+      |                 ^
+../Core/Src/main.c:239:40: warning: passing argument 2 of 'strcat' makes pointer from integer without a cast [-Wint-conversion]
+  239 |                   strcat(nome_file_txt,progressive_number);
       |                                        ^~~~~~~~~~~~~~~~~~
       |                                        |
       |                                        char
 C:\ST\STM32CubeIDE_1.14.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.100.202403111256\tools\bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/include/string.h:34:36: note: expected 'const char * restrict' but argument is of type 'char'
    34 | char    *strcat (char *__restrict, const char *__restrict);
       |                                    ^
-../Core/Src/main.c:304:44: warning: format '%i' expects argument of type 'int', but argument 2 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
-  304 |                   printf("Tempo di andata=%i  Tempo di ritorno= %i  delta_time=%i  tempo_rit_comp=%i \n" , value.a,value.b,value.c, value.d);
+../Core/Src/total_station_interface.c: In function 'stop_measure':
+../Core/Src/total_station_interface.c:199:16: warning: pointer targets in passing argument 1 of 'sscanf' differ in signedness [-Wpointer-sign]
+  199 |         sscanf(&uartBuffer[9],"%d",& ctrl);
+      |                ^~~~~~~~~~~~~~
+      |                |
+      |                uint8_t * {aka unsigned char *}
+C:\ST\STM32CubeIDE_1.14.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.100.202403111256\tools\bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/include/stdio.h:210:17: note: expected 'const char * restrict' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+  210 | int     sscanf (const char *__restrict, const char *__restrict, ...)
+      |                 ^
+../Core/Src/main.c:308:44: warning: format '%i' expects argument of type 'int', but argument 2 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
+  308 |                   printf("Tempo di andata=%i  Tempo di ritorno= %i  delta_time=%i  tempo_rit_comp=%i \n" , value.a,value.b,value.c, value.d);
       |                                           ~^                                                               ~~~~~~~
       |                                            |                                                                    |
       |                                            int                                                                  uint32_t {aka long unsigned int}
       |                                           %li
-../Core/Src/main.c:304:66: warning: format '%i' expects argument of type 'int', but argument 3 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
-  304 |                   printf("Tempo di andata=%i  Tempo di ritorno= %i  delta_time=%i  tempo_rit_comp=%i \n" , value.a,value.b,value.c, value.d);
+../Core/Src/total_station_interface.c: In function 'search_prism':
+../Core/Src/total_station_interface.c:96:1: warning: control reaches end of non-void function [-Wreturn-type]
+   96 | }
+      | ^
+../Core/Src/main.c:308:66: warning: format '%i' expects argument of type 'int', but argument 3 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
+  308 |                   printf("Tempo di andata=%i  Tempo di ritorno= %i  delta_time=%i  tempo_rit_comp=%i \n" , value.a,value.b,value.c, value.d);
       |                                                                 ~^                                                 ~~~~~~~
       |                                                                  |                                                      |
       |                                                                  int                                                    uint32_t {aka long unsigned int}
       |                                                                 %li
-../Core/Src/main.c:304:81: warning: format '%i' expects argument of type 'int', but argument 4 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
-  304 |                   printf("Tempo di andata=%i  Tempo di ritorno= %i  delta_time=%i  tempo_rit_comp=%i \n" , value.a,value.b,value.c, value.d);
+../Core/Src/main.c:308:81: warning: format '%i' expects argument of type 'int', but argument 4 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
+  308 |                   printf("Tempo di andata=%i  Tempo di ritorno= %i  delta_time=%i  tempo_rit_comp=%i \n" , value.a,value.b,value.c, value.d);
       |                                                                                ~^                                          ~~~~~~~
       |                                                                                 |                                               |
       |                                                                                 int                                             uint32_t {aka long unsigned int}
       |                                                                                %li
-../Core/Src/main.c:304:100: warning: format '%i' expects argument of type 'int', but argument 5 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
-  304 |                   printf("Tempo di andata=%i  Tempo di ritorno= %i  delta_time=%i  tempo_rit_comp=%i \n" , value.a,value.b,value.c, value.d);
+../Core/Src/main.c:308:100: warning: format '%i' expects argument of type 'int', but argument 5 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
+  308 |                   printf("Tempo di andata=%i  Tempo di ritorno= %i  delta_time=%i  tempo_rit_comp=%i \n" , value.a,value.b,value.c, value.d);
       |                                                                                                   ~^                                ~~~~~~~
       |                                                                                                    |                                     |
       |                                                                                                    int                                   uint32_t {aka long unsigned int}
       |                                                                                                   %li
+../Core/Src/main.c: In function 'HAL_UART_RxCpltCallback':
+../Core/Src/main.c:783:18: warning: unused variable 'start_ritorno' [-Wunused-variable]
+  783 |         uint32_t start_ritorno = __HAL_TIM_GET_COUNTER(&htim16);
+      |                  ^~~~~~~~~~~~~
 arm-none-eabi-gcc -o "TS_STM-H7.elf" @"objects.list"   -mcpu=cortex-m7 -T"C:\Users\andre\Documents\GitHub\TS_Nucleo\TS_STM-H7\TS_STM-H7\TS_STM-H7\STM32H723ZGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="TS_STM-H7.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 Finished building target: TS_STM-H7.elf
  
 arm-none-eabi-size  TS_STM-H7.elf 
 arm-none-eabi-objdump -h -S TS_STM-H7.elf  > "TS_STM-H7.list"
    text	   data	    bss	    dec	    hex	filename
-  94812	    624	  20960	 116396	  1c6ac	TS_STM-H7.elf
+  95180	    688	  20968	 116836	  1c864	TS_STM-H7.elf
 Finished building: default.size.stdout
  
 Finished building: TS_STM-H7.list
  
-15:20:19 **** Incremental Build of configuration Debug for project TS_STM-H7 ****
+16:20:08 **** Incremental Build of configuration Debug for project TS_STM-H7 ****
 make -j8 all 
 arm-none-eabi-size  TS_STM-H7.elf 
    text	   data	    bss	    dec	    hex	filename
-  94812	    624	  20960	 116396	  1c6ac	TS_STM-H7.elf
+  95180	    688	  20968	 116836	  1c864	TS_STM-H7.elf
 Finished building: default.size.stdout
  
-15:22:50 **** Incremental Build of configuration Debug for project TS_STM-H7 ****
+16:22:10 **** Incremental Build of configuration Debug for project TS_STM-H7 ****
 make -j8 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H723xx -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -I../FATFS/Target -I../FATFS/App -I../Middlewares/Third_Party/FatFs/src -I../USB_DEVICE/App -I../USB_DEVICE/Target -I../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-../Core/Src/main.c: In function 'main':
-../Core/Src/main.c:233:27: warning: passing argument 1 of 'sprintf' makes pointer from integer without a cast [-Wint-conversion]
-  233 |                   sprintf(progressive_number, "_%d", num_file);
-      |                           ^~~~~~~~~~~~~~~~~~
-      |                           |
-      |                           char
-In file included from ../USB_DEVICE/Target/usbd_conf.h:30,
-                 from ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h:28,
-                 from ../USB_DEVICE/App/usb_device.h:32,
-                 from ../Core/Src/main.c:22:
-C:\ST\STM32CubeIDE_1.14.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.100.202403111256\tools\bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/include/stdio.h:250:18: note: expected 'char * restrict' but argument is of type 'char'
-  250 | int     sprintf (char *__restrict, const char *__restrict, ...)
-      |                  ^
-../Core/Src/main.c:234:26: warning: passing argument 1 of 'strcat' makes pointer from integer without a cast [-Wint-conversion]
-  234 |                   strcat(progressive_number,".txt");
-      |                          ^~~~~~~~~~~~~~~~~~
-      |                          |
-      |                          char
-In file included from ../USB_DEVICE/Target/usbd_conf.h:32:
-C:\ST\STM32CubeIDE_1.14.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.100.202403111256\tools\bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/include/string.h:34:18: note: expected 'char * restrict' but argument is of type 'char'
-   34 | char    *strcat (char *__restrict, const char *__restrict);
-      |                  ^
-../Core/Src/main.c:236:40: warning: passing argument 2 of 'strcat' makes pointer from integer without a cast [-Wint-conversion]
-  236 |                   strcat(nome_file_txt,progressive_number);
-      |                                        ^~~~~~~~~~~~~~~~~~
-      |                                        |
-      |                                        char
-C:\ST\STM32CubeIDE_1.14.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.100.202403111256\tools\bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/include/string.h:34:36: note: expected 'const char * restrict' but argument is of type 'char'
-   34 | char    *strcat (char *__restrict, const char *__restrict);
-      |                                    ^
-../Core/Src/main.c:304:44: warning: format '%i' expects argument of type 'int', but argument 2 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
-  304 |                   printf("Tempo di andata=%i  Tempo di ritorno= %i  delta_time=%i  tempo_rit_comp=%i \n" , value.a,value.b,value.c, value.d);
-      |                                           ~^                                                               ~~~~~~~
-      |                                            |                                                                    |
-      |                                            int                                                                  uint32_t {aka long unsigned int}
-      |                                           %li
-../Core/Src/main.c:304:66: warning: format '%i' expects argument of type 'int', but argument 3 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
-  304 |                   printf("Tempo di andata=%i  Tempo di ritorno= %i  delta_time=%i  tempo_rit_comp=%i \n" , value.a,value.b,value.c, value.d);
-      |                                                                 ~^                                                 ~~~~~~~
-      |                                                                  |                                                      |
-      |                                                                  int                                                    uint32_t {aka long unsigned int}
-      |                                                                 %li
-../Core/Src/main.c:304:81: warning: format '%i' expects argument of type 'int', but argument 4 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
-  304 |                   printf("Tempo di andata=%i  Tempo di ritorno= %i  delta_time=%i  tempo_rit_comp=%i \n" , value.a,value.b,value.c, value.d);
-      |                                                                                ~^                                          ~~~~~~~
-      |                                                                                 |                                               |
-      |                                                                                 int                                             uint32_t {aka long unsigned int}
-      |                                                                                %li
-../Core/Src/main.c:304:100: warning: format '%i' expects argument of type 'int', but argument 5 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
-  304 |                   printf("Tempo di andata=%i  Tempo di ritorno= %i  delta_time=%i  tempo_rit_comp=%i \n" , value.a,value.b,value.c, value.d);
-      |                                                                                                   ~^                                ~~~~~~~
-      |                                                                                                    |                                     |
-      |                                                                                                    int                                   uint32_t {aka long unsigned int}
-      |                                                                                                   %li
+arm-none-eabi-gcc "../Core/Src/total_station_interface.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H723xx -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -I../FATFS/Target -I../FATFS/App -I../Middlewares/Third_Party/FatFs/src -I../USB_DEVICE/App -I../USB_DEVICE/Target -I../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/total_station_interface.d" -MT"Core/Src/total_station_interface.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/total_station_interface.o"
+../Core/Src/total_station_interface.c: In function 'search_prism':
+../Core/Src/total_station_interface.c:73:24: warning: pointer targets in passing argument 1 of 'sscanf' differ in signedness [-Wpointer-sign]
+   73 |                 sscanf(&uartBuffer[9],"%d",& ctrl);
+      |                        ^~~~~~~~~~~~~~
+      |                        |
+      |                        uint8_t * {aka unsigned char *}
+In file included from ../Core/Src/total_station_interface.c:9:
+C:\ST\STM32CubeIDE_1.14.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.100.202403111256\tools\bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/include/stdio.h:210:17: note: expected 'const char * restrict' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+  210 | int     sscanf (const char *__restrict, const char *__restrict, ...)
+      |                 ^
+../Core/Src/total_station_interface.c:84:32: warning: pointer targets in passing argument 1 of 'printf' differ in signedness [-Wpointer-sign]
+   84 |                         printf(uartBuffer);
+      |                                ^~~~~~~~~~
+      |                                |
+      |                                uint8_t * {aka unsigned char *}
+C:\ST\STM32CubeIDE_1.14.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.100.202403111256\tools\bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/include/stdio.h:206:17: note: expected 'const char * restrict' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+  206 | int     printf (const char *__restrict, ...)
+      |                 ^
+../Core/Src/total_station_interface.c:90:32: warning: pointer targets in passing argument 1 of 'printf' differ in signedness [-Wpointer-sign]
+   90 |                         printf(uartBuffer);
+      |                                ^~~~~~~~~~
+      |                                |
+      |                                uint8_t * {aka unsigned char *}
+C:\ST\STM32CubeIDE_1.14.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.100.202403111256\tools\bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/include/stdio.h:206:17: note: expected 'const char * restrict' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+  206 | int     printf (const char *__restrict, ...)
+      |                 ^
+../Core/Src/total_station_interface.c: In function 'start_distance':
+../Core/Src/total_station_interface.c:101:16: warning: pointer targets in passing argument 1 of 'sscanf' differ in signedness [-Wpointer-sign]
+  101 |         sscanf(&uartBuffer[9],"%d",& ctrl);
+      |                ^~~~~~~~~~~~~~
+      |                |
+      |                uint8_t * {aka unsigned char *}
+C:\ST\STM32CubeIDE_1.14.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.100.202403111256\tools\bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/include/stdio.h:210:17: note: expected 'const char * restrict' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+  210 | int     sscanf (const char *__restrict, const char *__restrict, ...)
+      |                 ^
+../Core/Src/total_station_interface.c: In function 'get_TS_time_stamp':
+../Core/Src/total_station_interface.c:134:29: warning: pointer targets in assignment from 'uint8_t *' {aka 'unsigned char *'} to 'char *' differ in signedness [-Wpointer-sign]
+  134 |         time_stamp_TS_buffer=ts_time_stamp_buffer;
+      |                             ^
+../Core/Src/total_station_interface.c:138:24: warning: format '%i' expects argument of type 'int', but argument 2 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
+  138 |         printf("Delta=%i   \n" , delta_time);
+      |                       ~^         ~~~~~~~~~~
+      |                        |         |
+      |                        int       uint32_t {aka long unsigned int}
+      |                       %li
+../Core/Src/total_station_interface.c: In function 'start_measure':
+../Core/Src/total_station_interface.c:160:24: warning: pointer targets in passing argument 1 of 'sscanf' differ in signedness [-Wpointer-sign]
+  160 |                 sscanf(&stream_buffer[9],"%d",& ctrl);
+      |                        ^~~~~~~~~~~~~~~~~
+      |                        |
+      |                        uint8_t * {aka unsigned char *}
+C:\ST\STM32CubeIDE_1.14.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.100.202403111256\tools\bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/include/stdio.h:210:17: note: expected 'const char * restrict' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+  210 | int     sscanf (const char *__restrict, const char *__restrict, ...)
+      |                 ^
+../Core/Src/total_station_interface.c: In function 'stop_measure':
+../Core/Src/total_station_interface.c:200:16: warning: pointer targets in passing argument 1 of 'sscanf' differ in signedness [-Wpointer-sign]
+  200 |         sscanf(&uartBuffer[9],"%d",& ctrl);
+      |                ^~~~~~~~~~~~~~
+      |                |
+      |                uint8_t * {aka unsigned char *}
+C:\ST\STM32CubeIDE_1.14.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.100.202403111256\tools\bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/include/stdio.h:210:17: note: expected 'const char * restrict' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+  210 | int     sscanf (const char *__restrict, const char *__restrict, ...)
+      |                 ^
+../Core/Src/total_station_interface.c: In function 'search_prism':
+../Core/Src/total_station_interface.c:96:1: warning: control reaches end of non-void function [-Wreturn-type]
+   96 | }
+      | ^
 arm-none-eabi-gcc -o "TS_STM-H7.elf" @"objects.list"   -mcpu=cortex-m7 -T"C:\Users\andre\Documents\GitHub\TS_Nucleo\TS_STM-H7\TS_STM-H7\TS_STM-H7\STM32H723ZGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="TS_STM-H7.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 Finished building target: TS_STM-H7.elf
  
 arm-none-eabi-size  TS_STM-H7.elf 
 arm-none-eabi-objdump -h -S TS_STM-H7.elf  > "TS_STM-H7.list"
    text	   data	    bss	    dec	    hex	filename
-  94964	    688	  20960	 116612	  1c784	TS_STM-H7.elf
+  95208	    688	  20968	 116864	  1c880	TS_STM-H7.elf
 Finished building: default.size.stdout
  
 Finished building: TS_STM-H7.list
  
-15:30:05 **** Incremental Build of configuration Debug for project TS_STM-H7 ****
+16:25:54 **** Incremental Build of configuration Debug for project TS_STM-H7 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/total_station_interface.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H723xx -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -I../FATFS/Target -I../FATFS/App -I../Middlewares/Third_Party/FatFs/src -I../USB_DEVICE/App -I../USB_DEVICE/Target -I../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/total_station_interface.d" -MT"Core/Src/total_station_interface.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/total_station_interface.o"
+../Core/Src/total_station_interface.c: In function 'search_prism':
+../Core/Src/total_station_interface.c:73:24: warning: pointer targets in passing argument 1 of 'sscanf' differ in signedness [-Wpointer-sign]
+   73 |                 sscanf(&uartBuffer[9],"%d",& ctrl);
+      |                        ^~~~~~~~~~~~~~
+      |                        |
+      |                        uint8_t * {aka unsigned char *}
+In file included from ../Core/Src/total_station_interface.c:9:
+C:\ST\STM32CubeIDE_1.14.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.100.202403111256\tools\bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/include/stdio.h:210:17: note: expected 'const char * restrict' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+  210 | int     sscanf (const char *__restrict, const char *__restrict, ...)
+      |                 ^
+../Core/Src/total_station_interface.c:84:32: warning: pointer targets in passing argument 1 of 'printf' differ in signedness [-Wpointer-sign]
+   84 |                         printf(uartBuffer);
+      |                                ^~~~~~~~~~
+      |                                |
+      |                                uint8_t * {aka unsigned char *}
+C:\ST\STM32CubeIDE_1.14.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.100.202403111256\tools\bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/include/stdio.h:206:17: note: expected 'const char * restrict' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+  206 | int     printf (const char *__restrict, ...)
+      |                 ^
+../Core/Src/total_station_interface.c:90:32: warning: pointer targets in passing argument 1 of 'printf' differ in signedness [-Wpointer-sign]
+   90 |                         printf(uartBuffer);
+      |                                ^~~~~~~~~~
+      |                                |
+      |                                uint8_t * {aka unsigned char *}
+C:\ST\STM32CubeIDE_1.14.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.100.202403111256\tools\bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/include/stdio.h:206:17: note: expected 'const char * restrict' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+  206 | int     printf (const char *__restrict, ...)
+      |                 ^
+../Core/Src/total_station_interface.c: In function 'start_distance':
+../Core/Src/total_station_interface.c:101:16: warning: pointer targets in passing argument 1 of 'sscanf' differ in signedness [-Wpointer-sign]
+  101 |         sscanf(&uartBuffer[9],"%d",& ctrl);
+      |                ^~~~~~~~~~~~~~
+      |                |
+      |                uint8_t * {aka unsigned char *}
+C:\ST\STM32CubeIDE_1.14.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.100.202403111256\tools\bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/include/stdio.h:210:17: note: expected 'const char * restrict' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+  210 | int     sscanf (const char *__restrict, const char *__restrict, ...)
+      |                 ^
+../Core/Src/total_station_interface.c: In function 'get_TS_time_stamp':
+../Core/Src/total_station_interface.c:134:29: warning: pointer targets in assignment from 'uint8_t *' {aka 'unsigned char *'} to 'char *' differ in signedness [-Wpointer-sign]
+  134 |         time_stamp_TS_buffer=ts_time_stamp_buffer;
+      |                             ^
+../Core/Src/total_station_interface.c:138:30: warning: format '%i' expects argument of type 'int', but argument 2 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
+  138 |         printf("time_andata=%i time_ritorno=%i start_ritorno=%i end_ritorno=%i Delta=%i   \n" , time_andata,time_ritorno,start_ritorno,end_ritorno,delta_time);
+      |                             ~^                                                                  ~~~~~~~~~~~
+      |                              |                                                                  |
+      |                              int                                                                uint32_t {aka long unsigned int}
+      |                             %li
+../Core/Src/total_station_interface.c:138:46: warning: format '%i' expects argument of type 'int', but argument 3 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
+  138 |         printf("time_andata=%i time_ritorno=%i start_ritorno=%i end_ritorno=%i Delta=%i   \n" , time_andata,time_ritorno,start_ritorno,end_ritorno,delta_time);
+      |                                             ~^                                                              ~~~~~~~~~~~~
+      |                                              |                                                              |
+      |                                              int                                                            uint32_t {aka long unsigned int}
+      |                                             %li
+../Core/Src/total_station_interface.c:138:63: warning: format '%i' expects argument of type 'int', but argument 4 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
+  138 |         printf("time_andata=%i time_ritorno=%i start_ritorno=%i end_ritorno=%i Delta=%i   \n" , time_andata,time_ritorno,start_ritorno,end_ritorno,delta_time);
+      |                                                              ~^                                                          ~~~~~~~~~~~~~
+      |                                                               |                                                          |
+      |                                                               int                                                        uint32_t {aka long unsigned int}
+      |                                                              %li
+../Core/Src/total_station_interface.c:138:78: warning: format '%i' expects argument of type 'int', but argument 5 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
+  138 |         printf("time_andata=%i time_ritorno=%i start_ritorno=%i end_ritorno=%i Delta=%i   \n" , time_andata,time_ritorno,start_ritorno,end_ritorno,delta_time);
+      |                                                                             ~^                                                         ~~~~~~~~~~~
+      |                                                                              |                                                         |
+      |                                                                              int                                                       uint32_t {aka long unsigned int}
+      |                                                                             %li
+../Core/Src/total_station_interface.c:138:87: warning: format '%i' expects argument of type 'int', but argument 6 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
+  138 |         printf("time_andata=%i time_ritorno=%i start_ritorno=%i end_ritorno=%i Delta=%i   \n" , time_andata,time_ritorno,start_ritorno,end_ritorno,delta_time);
+      |                                                                                      ~^                                                            ~~~~~~~~~~
+      |                                                                                       |                                                            |
+      |                                                                                       int                                                          uint32_t {aka long unsigned int}
+      |                                                                                      %li
+../Core/Src/total_station_interface.c: In function 'start_measure':
+../Core/Src/total_station_interface.c:160:24: warning: pointer targets in passing argument 1 of 'sscanf' differ in signedness [-Wpointer-sign]
+  160 |                 sscanf(&stream_buffer[9],"%d",& ctrl);
+      |                        ^~~~~~~~~~~~~~~~~
+      |                        |
+      |                        uint8_t * {aka unsigned char *}
+C:\ST\STM32CubeIDE_1.14.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.100.202403111256\tools\bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/include/stdio.h:210:17: note: expected 'const char * restrict' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+  210 | int     sscanf (const char *__restrict, const char *__restrict, ...)
+      |                 ^
+../Core/Src/total_station_interface.c: In function 'stop_measure':
+../Core/Src/total_station_interface.c:200:16: warning: pointer targets in passing argument 1 of 'sscanf' differ in signedness [-Wpointer-sign]
+  200 |         sscanf(&uartBuffer[9],"%d",& ctrl);
+      |                ^~~~~~~~~~~~~~
+      |                |
+      |                uint8_t * {aka unsigned char *}
+C:\ST\STM32CubeIDE_1.14.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.100.202403111256\tools\bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/include/stdio.h:210:17: note: expected 'const char * restrict' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+  210 | int     sscanf (const char *__restrict, const char *__restrict, ...)
+      |                 ^
+../Core/Src/total_station_interface.c: In function 'search_prism':
+../Core/Src/total_station_interface.c:96:1: warning: control reaches end of non-void function [-Wreturn-type]
+   96 | }
+      | ^
+arm-none-eabi-gcc -o "TS_STM-H7.elf" @"objects.list"   -mcpu=cortex-m7 -T"C:\Users\andre\Documents\GitHub\TS_Nucleo\TS_STM-H7\TS_STM-H7\TS_STM-H7\STM32H723ZGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="TS_STM-H7.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: TS_STM-H7.elf
+ 
+arm-none-eabi-size  TS_STM-H7.elf 
+arm-none-eabi-objdump -h -S TS_STM-H7.elf  > "TS_STM-H7.list"
+   text	   data	    bss	    dec	    hex	filename
+  95284	    688	  20968	 116940	  1c8cc	TS_STM-H7.elf
+Finished building: default.size.stdout
+ 
+Finished building: TS_STM-H7.list
+ 
+16:28:36 **** Incremental Build of configuration Debug for project TS_STM-H7 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/total_station_interface.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H723xx -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -I../FATFS/Target -I../FATFS/App -I../Middlewares/Third_Party/FatFs/src -I../USB_DEVICE/App -I../USB_DEVICE/Target -I../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/total_station_interface.d" -MT"Core/Src/total_station_interface.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/total_station_interface.o"
+../Core/Src/total_station_interface.c: In function 'search_prism':
+../Core/Src/total_station_interface.c:73:24: warning: pointer targets in passing argument 1 of 'sscanf' differ in signedness [-Wpointer-sign]
+   73 |                 sscanf(&uartBuffer[9],"%d",& ctrl);
+      |                        ^~~~~~~~~~~~~~
+      |                        |
+      |                        uint8_t * {aka unsigned char *}
+In file included from ../Core/Src/total_station_interface.c:9:
+C:\ST\STM32CubeIDE_1.14.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.100.202403111256\tools\bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/include/stdio.h:210:17: note: expected 'const char * restrict' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+  210 | int     sscanf (const char *__restrict, const char *__restrict, ...)
+      |                 ^
+../Core/Src/total_station_interface.c:84:32: warning: pointer targets in passing argument 1 of 'printf' differ in signedness [-Wpointer-sign]
+   84 |                         printf(uartBuffer);
+      |                                ^~~~~~~~~~
+      |                                |
+      |                                uint8_t * {aka unsigned char *}
+C:\ST\STM32CubeIDE_1.14.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.100.202403111256\tools\bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/include/stdio.h:206:17: note: expected 'const char * restrict' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+  206 | int     printf (const char *__restrict, ...)
+      |                 ^
+../Core/Src/total_station_interface.c:90:32: warning: pointer targets in passing argument 1 of 'printf' differ in signedness [-Wpointer-sign]
+   90 |                         printf(uartBuffer);
+      |                                ^~~~~~~~~~
+      |                                |
+      |                                uint8_t * {aka unsigned char *}
+C:\ST\STM32CubeIDE_1.14.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.100.202403111256\tools\bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/include/stdio.h:206:17: note: expected 'const char * restrict' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+  206 | int     printf (const char *__restrict, ...)
+      |                 ^
+../Core/Src/total_station_interface.c: In function 'start_distance':
+../Core/Src/total_station_interface.c:101:16: warning: pointer targets in passing argument 1 of 'sscanf' differ in signedness [-Wpointer-sign]
+  101 |         sscanf(&uartBuffer[9],"%d",& ctrl);
+      |                ^~~~~~~~~~~~~~
+      |                |
+      |                uint8_t * {aka unsigned char *}
+C:\ST\STM32CubeIDE_1.14.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.100.202403111256\tools\bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/include/stdio.h:210:17: note: expected 'const char * restrict' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+  210 | int     sscanf (const char *__restrict, const char *__restrict, ...)
+      |                 ^
+../Core/Src/total_station_interface.c: In function 'get_TS_time_stamp':
+../Core/Src/total_station_interface.c:134:29: warning: pointer targets in assignment from 'uint8_t *' {aka 'unsigned char *'} to 'char *' differ in signedness [-Wpointer-sign]
+  134 |         time_stamp_TS_buffer=ts_time_stamp_buffer;
+      |                             ^
+../Core/Src/total_station_interface.c:138:30: warning: format '%i' expects argument of type 'int', but argument 2 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
+  138 |         printf("time_andata=%i time_ritorno=%i start_ritorno=%i end_ritorno=%i Delta=%i   \n" , time_andata,time_ritorno,start_ritorno,end_ritorno,delta_time);
+      |                             ~^                                                                  ~~~~~~~~~~~
+      |                              |                                                                  |
+      |                              int                                                                uint32_t {aka long unsigned int}
+      |                             %li
+../Core/Src/total_station_interface.c:138:46: warning: format '%i' expects argument of type 'int', but argument 3 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
+  138 |         printf("time_andata=%i time_ritorno=%i start_ritorno=%i end_ritorno=%i Delta=%i   \n" , time_andata,time_ritorno,start_ritorno,end_ritorno,delta_time);
+      |                                             ~^                                                              ~~~~~~~~~~~~
+      |                                              |                                                              |
+      |                                              int                                                            uint32_t {aka long unsigned int}
+      |                                             %li
+../Core/Src/total_station_interface.c:138:63: warning: format '%i' expects argument of type 'int', but argument 4 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
+  138 |         printf("time_andata=%i time_ritorno=%i start_ritorno=%i end_ritorno=%i Delta=%i   \n" , time_andata,time_ritorno,start_ritorno,end_ritorno,delta_time);
+      |                                                              ~^                                                          ~~~~~~~~~~~~~
+      |                                                               |                                                          |
+      |                                                               int                                                        uint32_t {aka long unsigned int}
+      |                                                              %li
+../Core/Src/total_station_interface.c:138:78: warning: format '%i' expects argument of type 'int', but argument 5 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
+  138 |         printf("time_andata=%i time_ritorno=%i start_ritorno=%i end_ritorno=%i Delta=%i   \n" , time_andata,time_ritorno,start_ritorno,end_ritorno,delta_time);
+      |                                                                             ~^                                                         ~~~~~~~~~~~
+      |                                                                              |                                                         |
+      |                                                                              int                                                       uint32_t {aka long unsigned int}
+      |                                                                             %li
+../Core/Src/total_station_interface.c:138:87: warning: format '%i' expects argument of type 'int', but argument 6 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
+  138 |         printf("time_andata=%i time_ritorno=%i start_ritorno=%i end_ritorno=%i Delta=%i   \n" , time_andata,time_ritorno,start_ritorno,end_ritorno,delta_time);
+      |                                                                                      ~^                                                            ~~~~~~~~~~
+      |                                                                                       |                                                            |
+      |                                                                                       int                                                          uint32_t {aka long unsigned int}
+      |                                                                                      %li
+../Core/Src/total_station_interface.c: In function 'start_measure':
+../Core/Src/total_station_interface.c:160:24: warning: pointer targets in passing argument 1 of 'sscanf' differ in signedness [-Wpointer-sign]
+  160 |                 sscanf(&stream_buffer[9],"%d",& ctrl);
+      |                        ^~~~~~~~~~~~~~~~~
+      |                        |
+      |                        uint8_t * {aka unsigned char *}
+C:\ST\STM32CubeIDE_1.14.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.100.202403111256\tools\bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/include/stdio.h:210:17: note: expected 'const char * restrict' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+  210 | int     sscanf (const char *__restrict, const char *__restrict, ...)
+      |                 ^
+../Core/Src/total_station_interface.c: In function 'stop_measure':
+../Core/Src/total_station_interface.c:200:16: warning: pointer targets in passing argument 1 of 'sscanf' differ in signedness [-Wpointer-sign]
+  200 |         sscanf(&uartBuffer[9],"%d",& ctrl);
+      |                ^~~~~~~~~~~~~~
+      |                |
+      |                uint8_t * {aka unsigned char *}
+C:\ST\STM32CubeIDE_1.14.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.100.202403111256\tools\bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/include/stdio.h:210:17: note: expected 'const char * restrict' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+  210 | int     sscanf (const char *__restrict, const char *__restrict, ...)
+      |                 ^
+../Core/Src/total_station_interface.c: In function 'search_prism':
+../Core/Src/total_station_interface.c:96:1: warning: control reaches end of non-void function [-Wreturn-type]
+   96 | }
+      | ^
+arm-none-eabi-gcc -o "TS_STM-H7.elf" @"objects.list"   -mcpu=cortex-m7 -T"C:\Users\andre\Documents\GitHub\TS_Nucleo\TS_STM-H7\TS_STM-H7\TS_STM-H7\STM32H723ZGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="TS_STM-H7.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: TS_STM-H7.elf
+ 
+arm-none-eabi-size  TS_STM-H7.elf 
+arm-none-eabi-objdump -h -S TS_STM-H7.elf  > "TS_STM-H7.list"
+   text	   data	    bss	    dec	    hex	filename
+  95284	    688	  20968	 116940	  1c8cc	TS_STM-H7.elf
+Finished building: default.size.stdout
+ 
+Finished building: TS_STM-H7.list
+ 
+16:49:24 **** Incremental Build of configuration Debug for project TS_STM-H7 ****
 make -j8 all 
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H723xx -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -I../FATFS/Target -I../FATFS/App -I../Middlewares/Third_Party/FatFs/src -I../USB_DEVICE/App -I../USB_DEVICE/Target -I../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
 ../Core/Src/main.c: In function 'main':
-../Core/Src/main.c:233:27: warning: passing argument 1 of 'sprintf' makes pointer from integer without a cast [-Wint-conversion]
-  233 |                   sprintf(progressive_number, "_%d", num_file);
+../Core/Src/main.c:236:27: warning: passing argument 1 of 'sprintf' makes pointer from integer without a cast [-Wint-conversion]
+  236 |                   sprintf(progressive_number, "_%d", num_file);
       |                           ^~~~~~~~~~~~~~~~~~
       |                           |
       |                           char
@@ -160,8 +446,8 @@ In file included from ../USB_DEVICE/Target/usbd_conf.h:30,
 C:\ST\STM32CubeIDE_1.14.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.100.202403111256\tools\bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/include/stdio.h:250:18: note: expected 'char * restrict' but argument is of type 'char'
   250 | int     sprintf (char *__restrict, const char *__restrict, ...)
       |                  ^
-../Core/Src/main.c:234:26: warning: passing argument 1 of 'strcat' makes pointer from integer without a cast [-Wint-conversion]
-  234 |                   strcat(progressive_number,".txt");
+../Core/Src/main.c:237:26: warning: passing argument 1 of 'strcat' makes pointer from integer without a cast [-Wint-conversion]
+  237 |                   strcat(progressive_number,".txt");
       |                          ^~~~~~~~~~~~~~~~~~
       |                          |
       |                          char
@@ -169,45 +455,579 @@ In file included from ../USB_DEVICE/Target/usbd_conf.h:32:
 C:\ST\STM32CubeIDE_1.14.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.100.202403111256\tools\bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/include/string.h:34:18: note: expected 'char * restrict' but argument is of type 'char'
    34 | char    *strcat (char *__restrict, const char *__restrict);
       |                  ^
-../Core/Src/main.c:236:40: warning: passing argument 2 of 'strcat' makes pointer from integer without a cast [-Wint-conversion]
-  236 |                   strcat(nome_file_txt,progressive_number);
+../Core/Src/main.c:239:40: warning: passing argument 2 of 'strcat' makes pointer from integer without a cast [-Wint-conversion]
+  239 |                   strcat(nome_file_txt,progressive_number);
       |                                        ^~~~~~~~~~~~~~~~~~
       |                                        |
       |                                        char
 C:\ST\STM32CubeIDE_1.14.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.100.202403111256\tools\bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/include/string.h:34:36: note: expected 'const char * restrict' but argument is of type 'char'
    34 | char    *strcat (char *__restrict, const char *__restrict);
       |                                    ^
-../Core/Src/main.c:304:44: warning: format '%i' expects argument of type 'int', but argument 2 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
-  304 |                   printf("Tempo di andata=%i  Tempo di ritorno= %i  delta_time=%i  tempo_rit_comp=%i \n" , value.a,value.b,value.c, value.d);
+../Core/Src/main.c:308:44: warning: format '%i' expects argument of type 'int', but argument 2 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
+  308 |                   printf("Tempo di andata=%i  Tempo di ritorno= %i  delta_time=%i  tempo_rit_comp=%i \n" , value.a,value.b,value.c, value.d);
       |                                           ~^                                                               ~~~~~~~
       |                                            |                                                                    |
       |                                            int                                                                  uint32_t {aka long unsigned int}
       |                                           %li
-../Core/Src/main.c:304:66: warning: format '%i' expects argument of type 'int', but argument 3 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
-  304 |                   printf("Tempo di andata=%i  Tempo di ritorno= %i  delta_time=%i  tempo_rit_comp=%i \n" , value.a,value.b,value.c, value.d);
+../Core/Src/main.c:308:66: warning: format '%i' expects argument of type 'int', but argument 3 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
+  308 |                   printf("Tempo di andata=%i  Tempo di ritorno= %i  delta_time=%i  tempo_rit_comp=%i \n" , value.a,value.b,value.c, value.d);
       |                                                                 ~^                                                 ~~~~~~~
       |                                                                  |                                                      |
       |                                                                  int                                                    uint32_t {aka long unsigned int}
       |                                                                 %li
-../Core/Src/main.c:304:81: warning: format '%i' expects argument of type 'int', but argument 4 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
-  304 |                   printf("Tempo di andata=%i  Tempo di ritorno= %i  delta_time=%i  tempo_rit_comp=%i \n" , value.a,value.b,value.c, value.d);
+../Core/Src/main.c:308:81: warning: format '%i' expects argument of type 'int', but argument 4 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
+  308 |                   printf("Tempo di andata=%i  Tempo di ritorno= %i  delta_time=%i  tempo_rit_comp=%i \n" , value.a,value.b,value.c, value.d);
       |                                                                                ~^                                          ~~~~~~~
       |                                                                                 |                                               |
       |                                                                                 int                                             uint32_t {aka long unsigned int}
       |                                                                                %li
-../Core/Src/main.c:304:100: warning: format '%i' expects argument of type 'int', but argument 5 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
-  304 |                   printf("Tempo di andata=%i  Tempo di ritorno= %i  delta_time=%i  tempo_rit_comp=%i \n" , value.a,value.b,value.c, value.d);
+../Core/Src/main.c:308:100: warning: format '%i' expects argument of type 'int', but argument 5 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
+  308 |                   printf("Tempo di andata=%i  Tempo di ritorno= %i  delta_time=%i  tempo_rit_comp=%i \n" , value.a,value.b,value.c, value.d);
       |                                                                                                   ~^                                ~~~~~~~
       |                                                                                                    |                                     |
       |                                                                                                    int                                   uint32_t {aka long unsigned int}
       |                                                                                                   %li
+../Core/Src/main.c: In function 'HAL_UART_RxCpltCallback':
+../Core/Src/main.c:783:18: warning: unused variable 'start_ritorno' [-Wunused-variable]
+  783 |         uint32_t start_ritorno = __HAL_TIM_GET_COUNTER(&htim16);
+      |                  ^~~~~~~~~~~~~
 arm-none-eabi-gcc -o "TS_STM-H7.elf" @"objects.list"   -mcpu=cortex-m7 -T"C:\Users\andre\Documents\GitHub\TS_Nucleo\TS_STM-H7\TS_STM-H7\TS_STM-H7\STM32H723ZGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="TS_STM-H7.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 Finished building target: TS_STM-H7.elf
  
 arm-none-eabi-size  TS_STM-H7.elf 
 arm-none-eabi-objdump -h -S TS_STM-H7.elf  > "TS_STM-H7.list"
    text	   data	    bss	    dec	    hex	filename
-  94964	    688	  20960	 116612	  1c784	TS_STM-H7.elf
+  95284	    688	  20968	 116940	  1c8cc	TS_STM-H7.elf
+Finished building: default.size.stdout
+ 
+Finished building: TS_STM-H7.list
+ 
+17:12:59 **** Incremental Build of configuration Debug for project TS_STM-H7 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H723xx -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -I../FATFS/Target -I../FATFS/App -I../Middlewares/Third_Party/FatFs/src -I../USB_DEVICE/App -I../USB_DEVICE/Target -I../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc "../Core/Src/total_station_interface.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H723xx -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -I../FATFS/Target -I../FATFS/App -I../Middlewares/Third_Party/FatFs/src -I../USB_DEVICE/App -I../USB_DEVICE/Target -I../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/total_station_interface.d" -MT"Core/Src/total_station_interface.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/total_station_interface.o"
+../Core/Src/total_station_interface.c: In function 'search_prism':
+../Core/Src/total_station_interface.c:73:24: warning: pointer targets in passing argument 1 of 'sscanf' differ in signedness [-Wpointer-sign]
+   73 |                 sscanf(&uartBuffer[9],"%d",& ctrl);
+      |                        ^~~~~~~~~~~~~~
+      |                        |
+      |                        uint8_t * {aka unsigned char *}
+In file included from ../Core/Src/total_station_interface.c:9:
+C:\ST\STM32CubeIDE_1.14.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.100.202403111256\tools\bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/include/stdio.h:210:17: note: expected 'const char * restrict' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+  210 | int     sscanf (const char *__restrict, const char *__restrict, ...)
+      |                 ^
+../Core/Src/total_station_interface.c:84:32: warning: pointer targets in passing argument 1 of 'printf' differ in signedness [-Wpointer-sign]
+   84 |                         printf(uartBuffer);
+      |                                ^~~~~~~~~~
+      |                                |
+      |                                uint8_t * {aka unsigned char *}
+C:\ST\STM32CubeIDE_1.14.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.100.202403111256\tools\bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/include/stdio.h:206:17: note: expected 'const char * restrict' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+  206 | int     printf (const char *__restrict, ...)
+      |                 ^
+../Core/Src/total_station_interface.c:90:32: warning: pointer targets in passing argument 1 of 'printf' differ in signedness [-Wpointer-sign]
+   90 |                         printf(uartBuffer);
+      |                                ^~~~~~~~~~
+      |                                |
+      |                                uint8_t * {aka unsigned char *}
+C:\ST\STM32CubeIDE_1.14.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.100.202403111256\tools\bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/include/stdio.h:206:17: note: expected 'const char * restrict' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+  206 | int     printf (const char *__restrict, ...)
+      |                 ^
+../Core/Src/main.c: In function 'main':
+../Core/Src/total_station_interface.c: In function 'start_distance':
+../Core/Src/total_station_interface.c:101:16: warning: pointer targets in passing argument 1 of 'sscanf' differ in signedness [-Wpointer-sign]
+  101 |         sscanf(&uartBuffer[9],"%d",& ctrl);
+      |                ^~~~~~~~~~~~~~
+      |                |
+      |                uint8_t * {aka unsigned char *}
+C:\ST\STM32CubeIDE_1.14.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.100.202403111256\tools\bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/include/stdio.h:210:17: note: expected 'const char * restrict' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+  210 | int     sscanf (const char *__restrict, const char *__restrict, ...)
+      |                 ^
+../Core/Src/main.c:236:27: warning: passing argument 1 of 'sprintf' makes pointer from integer without a cast [-Wint-conversion]
+  236 |                   sprintf(progressive_number, "_%d", num_file);
+      |                           ^~~~~~~~~~~~~~~~~~
+      |                           |
+      |                           char
+In file included from ../USB_DEVICE/Target/usbd_conf.h:30,
+                 from ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h:28,
+                 from ../USB_DEVICE/App/usb_device.h:32,
+                 from ../Core/Src/main.c:22:
+C:\ST\STM32CubeIDE_1.14.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.100.202403111256\tools\bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/include/stdio.h:250:18: note: expected 'char * restrict' but argument is of type 'char'
+  250 | int     sprintf (char *__restrict, const char *__restrict, ...)
+      |                  ^
+../Core/Src/total_station_interface.c: In function 'get_TS_time_stamp':
+../Core/Src/total_station_interface.c:134:29: warning: pointer targets in assignment from 'uint8_t *' {aka 'unsigned char *'} to 'char *' differ in signedness [-Wpointer-sign]
+  134 |         time_stamp_TS_buffer=ts_time_stamp_buffer;
+      |                             ^
+../Core/Src/main.c:237:26: warning: passing argument 1 of 'strcat' makes pointer from integer without a cast [-Wint-conversion]
+  237 |                   strcat(progressive_number,".txt");
+      |                          ^~~~~~~~~~~~~~~~~~
+      |                          |
+      |                          char
+../Core/Src/total_station_interface.c:138:30: warning: format '%i' expects argument of type 'int', but argument 2 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
+  138 |         printf("time_andata=%i time_ritorno=%i start_ritorno=%i end_ritorno=%i Delta=%i   \n" , time_andata,time_ritorno,start_ritorno,end_ritorno,delta_time);
+      |                             ~^                                                                  ~~~~~~~~~~~
+      |                              |                                                                  |
+      |                              int                                                                uint32_t {aka long unsigned int}
+      |                             %li
+In file included from ../USB_DEVICE/Target/usbd_conf.h:32:
+C:\ST\STM32CubeIDE_1.14.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.100.202403111256\tools\bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/include/string.h:34:18: note: expected 'char * restrict' but argument is of type 'char'
+   34 | char    *strcat (char *__restrict, const char *__restrict);
+      |                  ^
+../Core/Src/total_station_interface.c:138:46: warning: format '%i' expects argument of type 'int', but argument 3 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
+  138 |         printf("time_andata=%i time_ritorno=%i start_ritorno=%i end_ritorno=%i Delta=%i   \n" , time_andata,time_ritorno,start_ritorno,end_ritorno,delta_time);
+      |                                             ~^                                                              ~~~~~~~~~~~~
+      |                                              |                                                              |
+      |                                              int                                                            uint32_t {aka long unsigned int}
+      |                                             %li
+../Core/Src/main.c:239:40: warning: passing argument 2 of 'strcat' makes pointer from integer without a cast [-Wint-conversion]
+  239 |                   strcat(nome_file_txt,progressive_number);
+      |                                        ^~~~~~~~~~~~~~~~~~
+      |                                        |
+      |                                        char
+../Core/Src/total_station_interface.c:138:63: warning: format '%i' expects argument of type 'int', but argument 4 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
+  138 |         printf("time_andata=%i time_ritorno=%i start_ritorno=%i end_ritorno=%i Delta=%i   \n" , time_andata,time_ritorno,start_ritorno,end_ritorno,delta_time);
+      |                                                              ~^                                                          ~~~~~~~~~~~~~
+      |                                                               |                                                          |
+      |                                                               int                                                        uint32_t {aka long unsigned int}
+      |                                                              %li
+C:\ST\STM32CubeIDE_1.14.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.100.202403111256\tools\bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/include/string.h:34:36: note: expected 'const char * restrict' but argument is of type 'char'
+   34 | char    *strcat (char *__restrict, const char *__restrict);
+      |                                    ^
+../Core/Src/total_station_interface.c:138:78: warning: format '%i' expects argument of type 'int', but argument 5 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
+  138 |         printf("time_andata=%i time_ritorno=%i start_ritorno=%i end_ritorno=%i Delta=%i   \n" , time_andata,time_ritorno,start_ritorno,end_ritorno,delta_time);
+      |                                                                             ~^                                                         ~~~~~~~~~~~
+      |                                                                              |                                                         |
+      |                                                                              int                                                       uint32_t {aka long unsigned int}
+      |                                                                             %li
+../Core/Src/main.c:308:44: warning: format '%i' expects argument of type 'int', but argument 2 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
+  308 |                   printf("Tempo di andata=%i  Tempo di ritorno= %i  delta_time=%i  tempo_rit_comp=%i \n" , value.a,value.b,value.c, value.d);
+      |                                           ~^                                                               ~~~~~~~
+      |                                            |                                                                    |
+      |                                            int                                                                  uint32_t {aka long unsigned int}
+      |                                           %li
+../Core/Src/total_station_interface.c:138:87: warning: format '%i' expects argument of type 'int', but argument 6 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
+  138 |         printf("time_andata=%i time_ritorno=%i start_ritorno=%i end_ritorno=%i Delta=%i   \n" , time_andata,time_ritorno,start_ritorno,end_ritorno,delta_time);
+      |                                                                                      ~^                                                            ~~~~~~~~~~
+      |                                                                                       |                                                            |
+      |                                                                                       int                                                          uint32_t {aka long unsigned int}
+      |                                                                                      %li
+../Core/Src/main.c:308:66: warning: format '%i' expects argument of type 'int', but argument 3 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
+  308 |                   printf("Tempo di andata=%i  Tempo di ritorno= %i  delta_time=%i  tempo_rit_comp=%i \n" , value.a,value.b,value.c, value.d);
+      |                                                                 ~^                                                 ~~~~~~~
+      |                                                                  |                                                      |
+      |                                                                  int                                                    uint32_t {aka long unsigned int}
+      |                                                                 %li
+../Core/Src/total_station_interface.c: In function 'start_measure':
+../Core/Src/total_station_interface.c:160:24: warning: pointer targets in passing argument 1 of 'sscanf' differ in signedness [-Wpointer-sign]
+  160 |                 sscanf(&stream_buffer[9],"%d",& ctrl);
+      |                        ^~~~~~~~~~~~~~~~~
+      |                        |
+      |                        uint8_t * {aka unsigned char *}
+C:\ST\STM32CubeIDE_1.14.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.100.202403111256\tools\bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/include/stdio.h:210:17: note: expected 'const char * restrict' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+  210 | int     sscanf (const char *__restrict, const char *__restrict, ...)
+      |                 ^
+../Core/Src/main.c:308:81: warning: format '%i' expects argument of type 'int', but argument 4 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
+  308 |                   printf("Tempo di andata=%i  Tempo di ritorno= %i  delta_time=%i  tempo_rit_comp=%i \n" , value.a,value.b,value.c, value.d);
+      |                                                                                ~^                                          ~~~~~~~
+      |                                                                                 |                                               |
+      |                                                                                 int                                             uint32_t {aka long unsigned int}
+      |                                                                                %li
+../Core/Src/total_station_interface.c: In function 'stop_measure':
+../Core/Src/total_station_interface.c:200:16: warning: pointer targets in passing argument 1 of 'sscanf' differ in signedness [-Wpointer-sign]
+  200 |         sscanf(&uartBuffer[9],"%d",& ctrl);
+      |                ^~~~~~~~~~~~~~
+      |                |
+      |                uint8_t * {aka unsigned char *}
+C:\ST\STM32CubeIDE_1.14.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.100.202403111256\tools\bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/include/stdio.h:210:17: note: expected 'const char * restrict' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+  210 | int     sscanf (const char *__restrict, const char *__restrict, ...)
+      |                 ^
+../Core/Src/main.c:308:100: warning: format '%i' expects argument of type 'int', but argument 5 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
+  308 |                   printf("Tempo di andata=%i  Tempo di ritorno= %i  delta_time=%i  tempo_rit_comp=%i \n" , value.a,value.b,value.c, value.d);
+      |                                                                                                   ~^                                ~~~~~~~
+      |                                                                                                    |                                     |
+      |                                                                                                    int                                   uint32_t {aka long unsigned int}
+      |                                                                                                   %li
+../Core/Src/total_station_interface.c: In function 'search_prism':
+../Core/Src/total_station_interface.c:96:1: warning: control reaches end of non-void function [-Wreturn-type]
+   96 | }
+      | ^
+arm-none-eabi-gcc -o "TS_STM-H7.elf" @"objects.list"   -mcpu=cortex-m7 -T"C:\Users\andre\Documents\GitHub\TS_Nucleo\TS_STM-H7\TS_STM-H7\TS_STM-H7\STM32H723ZGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="TS_STM-H7.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: TS_STM-H7.elf
+ 
+arm-none-eabi-size  TS_STM-H7.elf 
+arm-none-eabi-objdump -h -S TS_STM-H7.elf  > "TS_STM-H7.list"
+   text	   data	    bss	    dec	    hex	filename
+  95292	    688	  20968	 116948	  1c8d4	TS_STM-H7.elf
+Finished building: default.size.stdout
+ 
+Finished building: TS_STM-H7.list
+ 
+17:33:54 **** Incremental Build of configuration Debug for project TS_STM-H7 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H723xx -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -I../FATFS/Target -I../FATFS/App -I../Middlewares/Third_Party/FatFs/src -I../USB_DEVICE/App -I../USB_DEVICE/Target -I../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc "../Core/Src/total_station_interface.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H723xx -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -I../FATFS/Target -I../FATFS/App -I../Middlewares/Third_Party/FatFs/src -I../USB_DEVICE/App -I../USB_DEVICE/Target -I../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/total_station_interface.d" -MT"Core/Src/total_station_interface.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/total_station_interface.o"
+../Core/Src/total_station_interface.c: In function 'search_prism':
+../Core/Src/total_station_interface.c:73:24: warning: pointer targets in passing argument 1 of 'sscanf' differ in signedness [-Wpointer-sign]
+   73 |                 sscanf(&uartBuffer[9],"%d",& ctrl);
+      |                        ^~~~~~~~~~~~~~
+      |                        |
+      |                        uint8_t * {aka unsigned char *}
+In file included from ../Core/Src/total_station_interface.c:9:
+C:\ST\STM32CubeIDE_1.14.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.100.202403111256\tools\bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/include/stdio.h:210:17: note: expected 'const char * restrict' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+  210 | int     sscanf (const char *__restrict, const char *__restrict, ...)
+      |                 ^
+../Core/Src/total_station_interface.c:84:32: warning: pointer targets in passing argument 1 of 'printf' differ in signedness [-Wpointer-sign]
+   84 |                         printf(uartBuffer);
+      |                                ^~~~~~~~~~
+      |                                |
+      |                                uint8_t * {aka unsigned char *}
+C:\ST\STM32CubeIDE_1.14.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.100.202403111256\tools\bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/include/stdio.h:206:17: note: expected 'const char * restrict' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+  206 | int     printf (const char *__restrict, ...)
+      |                 ^
+../Core/Src/total_station_interface.c:90:32: warning: pointer targets in passing argument 1 of 'printf' differ in signedness [-Wpointer-sign]
+   90 |                         printf(uartBuffer);
+      |                                ^~~~~~~~~~
+      |                                |
+      |                                uint8_t * {aka unsigned char *}
+C:\ST\STM32CubeIDE_1.14.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.100.202403111256\tools\bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/include/stdio.h:206:17: note: expected 'const char * restrict' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+  206 | int     printf (const char *__restrict, ...)
+      |                 ^
+../Core/Src/main.c: In function 'main':
+../Core/Src/total_station_interface.c: In function 'start_distance':
+../Core/Src/total_station_interface.c:101:16: warning: pointer targets in passing argument 1 of 'sscanf' differ in signedness [-Wpointer-sign]
+  101 |         sscanf(&uartBuffer[9],"%d",& ctrl);
+      |                ^~~~~~~~~~~~~~
+      |                |
+      |                uint8_t * {aka unsigned char *}
+C:\ST\STM32CubeIDE_1.14.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.100.202403111256\tools\bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/include/stdio.h:210:17: note: expected 'const char * restrict' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+  210 | int     sscanf (const char *__restrict, const char *__restrict, ...)
+      |                 ^
+../Core/Src/main.c:236:27: warning: passing argument 1 of 'sprintf' makes pointer from integer without a cast [-Wint-conversion]
+  236 |                   sprintf(progressive_number, "_%d", num_file);
+      |                           ^~~~~~~~~~~~~~~~~~
+      |                           |
+      |                           char
+In file included from ../USB_DEVICE/Target/usbd_conf.h:30,
+                 from ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h:28,
+                 from ../USB_DEVICE/App/usb_device.h:32,
+                 from ../Core/Src/main.c:22:
+C:\ST\STM32CubeIDE_1.14.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.100.202403111256\tools\bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/include/stdio.h:250:18: note: expected 'char * restrict' but argument is of type 'char'
+  250 | int     sprintf (char *__restrict, const char *__restrict, ...)
+      |                  ^
+../Core/Src/total_station_interface.c: In function 'get_TS_time_stamp':
+../Core/Src/main.c:237:26: warning: passing argument 1 of 'strcat' makes pointer from integer without a cast [-Wint-conversion]
+  237 |                   strcat(progressive_number,".txt");
+      |                          ^~~~~~~~~~~~~~~~~~
+      |                          |
+      |                          char
+../Core/Src/total_station_interface.c:133:29: warning: pointer targets in assignment from 'uint8_t *' {aka 'unsigned char *'} to 'char *' differ in signedness [-Wpointer-sign]
+  133 |         time_stamp_TS_buffer=ts_time_stamp_buffer;
+      |                             ^
+In file included from ../USB_DEVICE/Target/usbd_conf.h:32:
+C:\ST\STM32CubeIDE_1.14.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.100.202403111256\tools\bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/include/string.h:34:18: note: expected 'char * restrict' but argument is of type 'char'
+   34 | char    *strcat (char *__restrict, const char *__restrict);
+      |                  ^
+../Core/Src/main.c:239:40: warning: passing argument 2 of 'strcat' makes pointer from integer without a cast [-Wint-conversion]
+  239 |                   strcat(nome_file_txt,progressive_number);
+      |                                        ^~~~~~~~~~~~~~~~~~
+      |                                        |
+      |                                        char
+../Core/Src/total_station_interface.c:137:30: warning: format '%i' expects argument of type 'int', but argument 2 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
+  137 |         printf("time_andata=%i time_ritorno=%i start_ritorno=%i end_ritorno=%i Delta=%i   \n" , time_andata,time_ritorno,start_ritorno,end_ritorno,delta_time);
+      |                             ~^                                                                  ~~~~~~~~~~~
+      |                              |                                                                  |
+      |                              int                                                                uint32_t {aka long unsigned int}
+      |                             %li
+C:\ST\STM32CubeIDE_1.14.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.100.202403111256\tools\bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/include/string.h:34:36: note: expected 'const char * restrict' but argument is of type 'char'
+   34 | char    *strcat (char *__restrict, const char *__restrict);
+      |                                    ^
+../Core/Src/total_station_interface.c:137:46: warning: format '%i' expects argument of type 'int', but argument 3 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
+  137 |         printf("time_andata=%i time_ritorno=%i start_ritorno=%i end_ritorno=%i Delta=%i   \n" , time_andata,time_ritorno,start_ritorno,end_ritorno,delta_time);
+      |                                             ~^                                                              ~~~~~~~~~~~~
+      |                                              |                                                              |
+      |                                              int                                                            uint32_t {aka long unsigned int}
+      |                                             %li
+../Core/Src/main.c:308:44: warning: format '%i' expects argument of type 'int', but argument 2 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
+  308 |                   printf("Tempo di andata=%i  Tempo di ritorno= %i  delta_time=%i  tempo_rit_comp=%i \n" , value.a,value.b,value.c, value.d);
+      |                                           ~^                                                               ~~~~~~~
+      |                                            |                                                                    |
+      |                                            int                                                                  uint32_t {aka long unsigned int}
+      |                                           %li
+../Core/Src/total_station_interface.c:137:63: warning: format '%i' expects argument of type 'int', but argument 4 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
+  137 |         printf("time_andata=%i time_ritorno=%i start_ritorno=%i end_ritorno=%i Delta=%i   \n" , time_andata,time_ritorno,start_ritorno,end_ritorno,delta_time);
+      |                                                              ~^                                                          ~~~~~~~~~~~~~
+      |                                                               |                                                          |
+      |                                                               int                                                        uint32_t {aka long unsigned int}
+      |                                                              %li
+../Core/Src/main.c:308:66: warning: format '%i' expects argument of type 'int', but argument 3 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
+  308 |                   printf("Tempo di andata=%i  Tempo di ritorno= %i  delta_time=%i  tempo_rit_comp=%i \n" , value.a,value.b,value.c, value.d);
+      |                                                                 ~^                                                 ~~~~~~~
+      |                                                                  |                                                      |
+      |                                                                  int                                                    uint32_t {aka long unsigned int}
+      |                                                                 %li
+../Core/Src/total_station_interface.c:137:78: warning: format '%i' expects argument of type 'int', but argument 5 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
+  137 |         printf("time_andata=%i time_ritorno=%i start_ritorno=%i end_ritorno=%i Delta=%i   \n" , time_andata,time_ritorno,start_ritorno,end_ritorno,delta_time);
+      |                                                                             ~^                                                         ~~~~~~~~~~~
+      |                                                                              |                                                         |
+      |                                                                              int                                                       uint32_t {aka long unsigned int}
+      |                                                                             %li
+../Core/Src/main.c:308:81: warning: format '%i' expects argument of type 'int', but argument 4 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
+  308 |                   printf("Tempo di andata=%i  Tempo di ritorno= %i  delta_time=%i  tempo_rit_comp=%i \n" , value.a,value.b,value.c, value.d);
+      |                                                                                ~^                                          ~~~~~~~
+      |                                                                                 |                                               |
+      |                                                                                 int                                             uint32_t {aka long unsigned int}
+      |                                                                                %li
+../Core/Src/total_station_interface.c:137:87: warning: format '%i' expects argument of type 'int', but argument 6 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
+  137 |         printf("time_andata=%i time_ritorno=%i start_ritorno=%i end_ritorno=%i Delta=%i   \n" , time_andata,time_ritorno,start_ritorno,end_ritorno,delta_time);
+      |                                                                                      ~^                                                            ~~~~~~~~~~
+      |                                                                                       |                                                            |
+      |                                                                                       int                                                          uint32_t {aka long unsigned int}
+      |                                                                                      %li
+../Core/Src/main.c:308:100: warning: format '%i' expects argument of type 'int', but argument 5 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
+  308 |                   printf("Tempo di andata=%i  Tempo di ritorno= %i  delta_time=%i  tempo_rit_comp=%i \n" , value.a,value.b,value.c, value.d);
+      |                                                                                                   ~^                                ~~~~~~~
+      |                                                                                                    |                                     |
+      |                                                                                                    int                                   uint32_t {aka long unsigned int}
+      |                                                                                                   %li
+../Core/Src/total_station_interface.c: In function 'start_measure':
+../Core/Src/total_station_interface.c:159:24: warning: pointer targets in passing argument 1 of 'sscanf' differ in signedness [-Wpointer-sign]
+  159 |                 sscanf(&stream_buffer[9],"%d",& ctrl);
+      |                        ^~~~~~~~~~~~~~~~~
+      |                        |
+      |                        uint8_t * {aka unsigned char *}
+C:\ST\STM32CubeIDE_1.14.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.100.202403111256\tools\bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/include/stdio.h:210:17: note: expected 'const char * restrict' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+  210 | int     sscanf (const char *__restrict, const char *__restrict, ...)
+      |                 ^
+../Core/Src/total_station_interface.c: In function 'stop_measure':
+../Core/Src/total_station_interface.c:199:16: warning: pointer targets in passing argument 1 of 'sscanf' differ in signedness [-Wpointer-sign]
+  199 |         sscanf(&uartBuffer[9],"%d",& ctrl);
+      |                ^~~~~~~~~~~~~~
+      |                |
+      |                uint8_t * {aka unsigned char *}
+C:\ST\STM32CubeIDE_1.14.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.100.202403111256\tools\bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/include/stdio.h:210:17: note: expected 'const char * restrict' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+  210 | int     sscanf (const char *__restrict, const char *__restrict, ...)
+      |                 ^
+../Core/Src/total_station_interface.c: In function 'search_prism':
+../Core/Src/total_station_interface.c:96:1: warning: control reaches end of non-void function [-Wreturn-type]
+   96 | }
+      | ^
+arm-none-eabi-gcc -o "TS_STM-H7.elf" @"objects.list"   -mcpu=cortex-m7 -T"C:\Users\andre\Documents\GitHub\TS_Nucleo\TS_STM-H7\TS_STM-H7\TS_STM-H7\STM32H723ZGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="TS_STM-H7.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: TS_STM-H7.elf
+ 
+arm-none-eabi-size  TS_STM-H7.elf 
+arm-none-eabi-objdump -h -S TS_STM-H7.elf  > "TS_STM-H7.list"
+   text	   data	    bss	    dec	    hex	filename
+  95272	    688	  20960	 116920	  1c8b8	TS_STM-H7.elf
+Finished building: default.size.stdout
+ 
+Finished building: TS_STM-H7.list
+ 
+17:36:14 **** Incremental Build of configuration Debug for project TS_STM-H7 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/total_station_interface.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H723xx -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -I../FATFS/Target -I../FATFS/App -I../Middlewares/Third_Party/FatFs/src -I../USB_DEVICE/App -I../USB_DEVICE/Target -I../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/total_station_interface.d" -MT"Core/Src/total_station_interface.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/total_station_interface.o"
+../Core/Src/total_station_interface.c: In function 'search_prism':
+../Core/Src/total_station_interface.c:73:24: warning: pointer targets in passing argument 1 of 'sscanf' differ in signedness [-Wpointer-sign]
+   73 |                 sscanf(&uartBuffer[9],"%d",& ctrl);
+      |                        ^~~~~~~~~~~~~~
+      |                        |
+      |                        uint8_t * {aka unsigned char *}
+In file included from ../Core/Src/total_station_interface.c:9:
+C:\ST\STM32CubeIDE_1.14.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.100.202403111256\tools\bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/include/stdio.h:210:17: note: expected 'const char * restrict' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+  210 | int     sscanf (const char *__restrict, const char *__restrict, ...)
+      |                 ^
+../Core/Src/total_station_interface.c:84:32: warning: pointer targets in passing argument 1 of 'printf' differ in signedness [-Wpointer-sign]
+   84 |                         printf(uartBuffer);
+      |                                ^~~~~~~~~~
+      |                                |
+      |                                uint8_t * {aka unsigned char *}
+C:\ST\STM32CubeIDE_1.14.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.100.202403111256\tools\bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/include/stdio.h:206:17: note: expected 'const char * restrict' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+  206 | int     printf (const char *__restrict, ...)
+      |                 ^
+../Core/Src/total_station_interface.c:90:32: warning: pointer targets in passing argument 1 of 'printf' differ in signedness [-Wpointer-sign]
+   90 |                         printf(uartBuffer);
+      |                                ^~~~~~~~~~
+      |                                |
+      |                                uint8_t * {aka unsigned char *}
+C:\ST\STM32CubeIDE_1.14.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.100.202403111256\tools\bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/include/stdio.h:206:17: note: expected 'const char * restrict' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+  206 | int     printf (const char *__restrict, ...)
+      |                 ^
+../Core/Src/total_station_interface.c: In function 'start_distance':
+../Core/Src/total_station_interface.c:101:16: warning: pointer targets in passing argument 1 of 'sscanf' differ in signedness [-Wpointer-sign]
+  101 |         sscanf(&uartBuffer[9],"%d",& ctrl);
+      |                ^~~~~~~~~~~~~~
+      |                |
+      |                uint8_t * {aka unsigned char *}
+C:\ST\STM32CubeIDE_1.14.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.100.202403111256\tools\bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/include/stdio.h:210:17: note: expected 'const char * restrict' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+  210 | int     sscanf (const char *__restrict, const char *__restrict, ...)
+      |                 ^
+../Core/Src/total_station_interface.c: In function 'get_TS_time_stamp':
+../Core/Src/total_station_interface.c:133:29: warning: pointer targets in assignment from 'uint8_t *' {aka 'unsigned char *'} to 'char *' differ in signedness [-Wpointer-sign]
+  133 |         time_stamp_TS_buffer=ts_time_stamp_buffer;
+      |                             ^
+../Core/Src/total_station_interface.c:138:30: warning: format '%i' expects argument of type 'int', but argument 2 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
+  138 |         printf("time_andata=%i time_ritorno=%i start_ritorno=%i end_ritorno=%i Delta=%i   \n" , time_andata,time_ritorno,start_ritorno,end_ritorno,delta_time);
+      |                             ~^                                                                  ~~~~~~~~~~~
+      |                              |                                                                  |
+      |                              int                                                                uint32_t {aka long unsigned int}
+      |                             %li
+../Core/Src/total_station_interface.c:138:46: warning: format '%i' expects argument of type 'int', but argument 3 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
+  138 |         printf("time_andata=%i time_ritorno=%i start_ritorno=%i end_ritorno=%i Delta=%i   \n" , time_andata,time_ritorno,start_ritorno,end_ritorno,delta_time);
+      |                                             ~^                                                              ~~~~~~~~~~~~
+      |                                              |                                                              |
+      |                                              int                                                            uint32_t {aka long unsigned int}
+      |                                             %li
+../Core/Src/total_station_interface.c:138:63: warning: format '%i' expects argument of type 'int', but argument 4 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
+  138 |         printf("time_andata=%i time_ritorno=%i start_ritorno=%i end_ritorno=%i Delta=%i   \n" , time_andata,time_ritorno,start_ritorno,end_ritorno,delta_time);
+      |                                                              ~^                                                          ~~~~~~~~~~~~~
+      |                                                               |                                                          |
+      |                                                               int                                                        uint32_t {aka long unsigned int}
+      |                                                              %li
+../Core/Src/total_station_interface.c:138:78: warning: format '%i' expects argument of type 'int', but argument 5 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
+  138 |         printf("time_andata=%i time_ritorno=%i start_ritorno=%i end_ritorno=%i Delta=%i   \n" , time_andata,time_ritorno,start_ritorno,end_ritorno,delta_time);
+      |                                                                             ~^                                                         ~~~~~~~~~~~
+      |                                                                              |                                                         |
+      |                                                                              int                                                       uint32_t {aka long unsigned int}
+      |                                                                             %li
+../Core/Src/total_station_interface.c:138:87: warning: format '%i' expects argument of type 'int', but argument 6 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
+  138 |         printf("time_andata=%i time_ritorno=%i start_ritorno=%i end_ritorno=%i Delta=%i   \n" , time_andata,time_ritorno,start_ritorno,end_ritorno,delta_time);
+      |                                                                                      ~^                                                            ~~~~~~~~~~
+      |                                                                                       |                                                            |
+      |                                                                                       int                                                          uint32_t {aka long unsigned int}
+      |                                                                                      %li
+../Core/Src/total_station_interface.c: In function 'start_measure':
+../Core/Src/total_station_interface.c:160:24: warning: pointer targets in passing argument 1 of 'sscanf' differ in signedness [-Wpointer-sign]
+  160 |                 sscanf(&stream_buffer[9],"%d",& ctrl);
+      |                        ^~~~~~~~~~~~~~~~~
+      |                        |
+      |                        uint8_t * {aka unsigned char *}
+C:\ST\STM32CubeIDE_1.14.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.100.202403111256\tools\bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/include/stdio.h:210:17: note: expected 'const char * restrict' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+  210 | int     sscanf (const char *__restrict, const char *__restrict, ...)
+      |                 ^
+../Core/Src/total_station_interface.c: In function 'stop_measure':
+../Core/Src/total_station_interface.c:200:16: warning: pointer targets in passing argument 1 of 'sscanf' differ in signedness [-Wpointer-sign]
+  200 |         sscanf(&uartBuffer[9],"%d",& ctrl);
+      |                ^~~~~~~~~~~~~~
+      |                |
+      |                uint8_t * {aka unsigned char *}
+C:\ST\STM32CubeIDE_1.14.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.100.202403111256\tools\bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/include/stdio.h:210:17: note: expected 'const char * restrict' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+  210 | int     sscanf (const char *__restrict, const char *__restrict, ...)
+      |                 ^
+../Core/Src/total_station_interface.c: In function 'search_prism':
+../Core/Src/total_station_interface.c:96:1: warning: control reaches end of non-void function [-Wreturn-type]
+   96 | }
+      | ^
+arm-none-eabi-gcc -o "TS_STM-H7.elf" @"objects.list"   -mcpu=cortex-m7 -T"C:\Users\andre\Documents\GitHub\TS_Nucleo\TS_STM-H7\TS_STM-H7\TS_STM-H7\STM32H723ZGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="TS_STM-H7.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: TS_STM-H7.elf
+ 
+arm-none-eabi-size  TS_STM-H7.elf 
+arm-none-eabi-objdump -h -S TS_STM-H7.elf  > "TS_STM-H7.list"
+   text	   data	    bss	    dec	    hex	filename
+  95276	    688	  20960	 116924	  1c8bc	TS_STM-H7.elf
+Finished building: default.size.stdout
+ 
+Finished building: TS_STM-H7.list
+ 
+17:38:13 **** Incremental Build of configuration Debug for project TS_STM-H7 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/total_station_interface.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H723xx -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -I../FATFS/Target -I../FATFS/App -I../Middlewares/Third_Party/FatFs/src -I../USB_DEVICE/App -I../USB_DEVICE/Target -I../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/total_station_interface.d" -MT"Core/Src/total_station_interface.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/total_station_interface.o"
+../Core/Src/total_station_interface.c: In function 'search_prism':
+../Core/Src/total_station_interface.c:73:24: warning: pointer targets in passing argument 1 of 'sscanf' differ in signedness [-Wpointer-sign]
+   73 |                 sscanf(&uartBuffer[9],"%d",& ctrl);
+      |                        ^~~~~~~~~~~~~~
+      |                        |
+      |                        uint8_t * {aka unsigned char *}
+In file included from ../Core/Src/total_station_interface.c:9:
+C:\ST\STM32CubeIDE_1.14.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.100.202403111256\tools\bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/include/stdio.h:210:17: note: expected 'const char * restrict' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+  210 | int     sscanf (const char *__restrict, const char *__restrict, ...)
+      |                 ^
+../Core/Src/total_station_interface.c:84:32: warning: pointer targets in passing argument 1 of 'printf' differ in signedness [-Wpointer-sign]
+   84 |                         printf(uartBuffer);
+      |                                ^~~~~~~~~~
+      |                                |
+      |                                uint8_t * {aka unsigned char *}
+C:\ST\STM32CubeIDE_1.14.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.100.202403111256\tools\bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/include/stdio.h:206:17: note: expected 'const char * restrict' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+  206 | int     printf (const char *__restrict, ...)
+      |                 ^
+../Core/Src/total_station_interface.c:90:32: warning: pointer targets in passing argument 1 of 'printf' differ in signedness [-Wpointer-sign]
+   90 |                         printf(uartBuffer);
+      |                                ^~~~~~~~~~
+      |                                |
+      |                                uint8_t * {aka unsigned char *}
+C:\ST\STM32CubeIDE_1.14.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.100.202403111256\tools\bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/include/stdio.h:206:17: note: expected 'const char * restrict' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+  206 | int     printf (const char *__restrict, ...)
+      |                 ^
+../Core/Src/total_station_interface.c: In function 'start_distance':
+../Core/Src/total_station_interface.c:101:16: warning: pointer targets in passing argument 1 of 'sscanf' differ in signedness [-Wpointer-sign]
+  101 |         sscanf(&uartBuffer[9],"%d",& ctrl);
+      |                ^~~~~~~~~~~~~~
+      |                |
+      |                uint8_t * {aka unsigned char *}
+C:\ST\STM32CubeIDE_1.14.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.100.202403111256\tools\bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/include/stdio.h:210:17: note: expected 'const char * restrict' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+  210 | int     sscanf (const char *__restrict, const char *__restrict, ...)
+      |                 ^
+../Core/Src/total_station_interface.c: In function 'get_TS_time_stamp':
+../Core/Src/total_station_interface.c:133:29: warning: pointer targets in assignment from 'uint8_t *' {aka 'unsigned char *'} to 'char *' differ in signedness [-Wpointer-sign]
+  133 |         time_stamp_TS_buffer=ts_time_stamp_buffer;
+      |                             ^
+../Core/Src/total_station_interface.c:137:30: warning: format '%i' expects argument of type 'int', but argument 2 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
+  137 |         printf("time_andata=%i time_ritorno=%i start_ritorno=%i end_ritorno=%i Delta=%i   \n" , time_andata,time_ritorno,start_ritorno,end_ritorno,delta_time);
+      |                             ~^                                                                  ~~~~~~~~~~~
+      |                              |                                                                  |
+      |                              int                                                                uint32_t {aka long unsigned int}
+      |                             %li
+../Core/Src/total_station_interface.c:137:46: warning: format '%i' expects argument of type 'int', but argument 3 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
+  137 |         printf("time_andata=%i time_ritorno=%i start_ritorno=%i end_ritorno=%i Delta=%i   \n" , time_andata,time_ritorno,start_ritorno,end_ritorno,delta_time);
+      |                                             ~^                                                              ~~~~~~~~~~~~
+      |                                              |                                                              |
+      |                                              int                                                            uint32_t {aka long unsigned int}
+      |                                             %li
+../Core/Src/total_station_interface.c:137:63: warning: format '%i' expects argument of type 'int', but argument 4 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
+  137 |         printf("time_andata=%i time_ritorno=%i start_ritorno=%i end_ritorno=%i Delta=%i   \n" , time_andata,time_ritorno,start_ritorno,end_ritorno,delta_time);
+      |                                                              ~^                                                          ~~~~~~~~~~~~~
+      |                                                               |                                                          |
+      |                                                               int                                                        uint32_t {aka long unsigned int}
+      |                                                              %li
+../Core/Src/total_station_interface.c:137:78: warning: format '%i' expects argument of type 'int', but argument 5 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
+  137 |         printf("time_andata=%i time_ritorno=%i start_ritorno=%i end_ritorno=%i Delta=%i   \n" , time_andata,time_ritorno,start_ritorno,end_ritorno,delta_time);
+      |                                                                             ~^                                                         ~~~~~~~~~~~
+      |                                                                              |                                                         |
+      |                                                                              int                                                       uint32_t {aka long unsigned int}
+      |                                                                             %li
+../Core/Src/total_station_interface.c:137:87: warning: format '%i' expects argument of type 'int', but argument 6 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
+  137 |         printf("time_andata=%i time_ritorno=%i start_ritorno=%i end_ritorno=%i Delta=%i   \n" , time_andata,time_ritorno,start_ritorno,end_ritorno,delta_time);
+      |                                                                                      ~^                                                            ~~~~~~~~~~
+      |                                                                                       |                                                            |
+      |                                                                                       int                                                          uint32_t {aka long unsigned int}
+      |                                                                                      %li
+../Core/Src/total_station_interface.c: In function 'start_measure':
+../Core/Src/total_station_interface.c:159:24: warning: pointer targets in passing argument 1 of 'sscanf' differ in signedness [-Wpointer-sign]
+  159 |                 sscanf(&stream_buffer[9],"%d",& ctrl);
+      |                        ^~~~~~~~~~~~~~~~~
+      |                        |
+      |                        uint8_t * {aka unsigned char *}
+C:\ST\STM32CubeIDE_1.14.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.100.202403111256\tools\bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/include/stdio.h:210:17: note: expected 'const char * restrict' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+  210 | int     sscanf (const char *__restrict, const char *__restrict, ...)
+      |                 ^
+../Core/Src/total_station_interface.c: In function 'stop_measure':
+../Core/Src/total_station_interface.c:199:16: warning: pointer targets in passing argument 1 of 'sscanf' differ in signedness [-Wpointer-sign]
+  199 |         sscanf(&uartBuffer[9],"%d",& ctrl);
+      |                ^~~~~~~~~~~~~~
+      |                |
+      |                uint8_t * {aka unsigned char *}
+C:\ST\STM32CubeIDE_1.14.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.100.202403111256\tools\bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/include/stdio.h:210:17: note: expected 'const char * restrict' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+  210 | int     sscanf (const char *__restrict, const char *__restrict, ...)
+      |                 ^
+../Core/Src/total_station_interface.c: In function 'search_prism':
+../Core/Src/total_station_interface.c:96:1: warning: control reaches end of non-void function [-Wreturn-type]
+   96 | }
+      | ^
+arm-none-eabi-gcc -o "TS_STM-H7.elf" @"objects.list"   -mcpu=cortex-m7 -T"C:\Users\andre\Documents\GitHub\TS_Nucleo\TS_STM-H7\TS_STM-H7\TS_STM-H7\STM32H723ZGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="TS_STM-H7.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: TS_STM-H7.elf
+ 
+arm-none-eabi-size  TS_STM-H7.elf 
+arm-none-eabi-objdump -h -S TS_STM-H7.elf  > "TS_STM-H7.list"
+   text	   data	    bss	    dec	    hex	filename
+  95276	    688	  20960	 116924	  1c8bc	TS_STM-H7.elf
 Finished building: default.size.stdout
  
 Finished building: TS_STM-H7.list

@@ -24,7 +24,7 @@ char 	time_stamp_request[64]="%time_stamp_request";//"send nuc time stamp\r";
 char 	SD_error_msg[64]="SD not Monted";
 extern 	uint8_t rx_usb[];
 extern 	int size_rx_usb;
-
+extern TIM_HandleTypeDef htim16;
 
 void get_file_name (){ //(uint8_t rx_usb[])
 	tx_usb_to_nuc=file_name_request;
@@ -38,7 +38,7 @@ void get_file_name (){ //(uint8_t rx_usb[])
 	memcpy(nome_file,rx_usb_pointer,size_rx_usb);
 }
 
-void get_nuc_time_stamp(){
+uint32_t get_nuc_time_stamp(uint32_t start_andata){
 	  tx_usb_to_nuc=time_stamp_request;
 	  //memset((uint8_t *)&rx_usb,1,size_rx_usb);
 	  CDC_Transmit_HS((uint8_t*)tx_usb_to_nuc,strlen(tx_usb_to_nuc));
@@ -48,8 +48,10 @@ void get_nuc_time_stamp(){
 		  	}
 	  		HAL_Delay(100);
 	  	 }
+	  start_andata = __HAL_TIM_GET_COUNTER(&htim16);
 	  rx_usb_pointer=(char *) rx_usb;
 	  nuc_time_stamp=rx_usb_pointer;
+	  return  start_andata;
 	  //rx_usb_pointer=NULL;
 	  //memset((uint8_t *)&rx_usb,0,size_rx_usb);
 }

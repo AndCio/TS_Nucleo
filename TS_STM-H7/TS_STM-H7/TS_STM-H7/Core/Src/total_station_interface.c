@@ -25,7 +25,7 @@ char start_stream_command [16]="%R8Q,4:\r";
 char stop_stream_command [16]="%R8Q,5:\r";
 char *time_stamp_TS_buffer;
 char start_distance_command [16]="%R8Q,1:\r";
-
+uint32_t start_ritorno;
 uint8_t ts_time_stamp_buffer[50];
 
 //extern UART_BUFFER_SIZE;
@@ -110,27 +110,35 @@ void start_distance(){
 ForTime get_TS_time_stamp(){
 	ForTime time_ts;
 	// Salva il valore iniziale del contatore
-	uint32_t start_andata = __HAL_TIM_GET_COUNTER(&htim16);
-	get_nuc_time_stamp();
+	uint32_t start_andata_1 = __HAL_TIM_GET_COUNTER(&htim16);
+	uint32_t start_andata=get_nuc_time_stamp(start_andata_1);
 	strcat(nuc_time_stamp, "\r");
 	strcat(get_time_stamp_command, nuc_time_stamp);
 	//buffer_tx=get_time_stamp_command;
 	//sprintf(buffer_tx, "%c", nuc_time_stamp);
 	//printf((char *)get_time_stamp_command);
 	// Salva il valore finale del contatore
+	HAL_Delay(800);
 	uint32_t end_andata = __HAL_TIM_GET_COUNTER(&htim16);
 	// Calcola il tempo di esecuzione in 0.5 microsecondi
 	uint32_t time_andata = end_andata - start_andata;
+	//uint32_t time_andata_1 = end_andata - start_andata_1;
+	//printf("time_andata_1=%i  end_andata=%i \n" , time_andata_1, end_andata);
+	//printf("time_andata=%i  start_andata=%i \n" , time_andata, start_andata);
 	HAL_UART_Transmit(&huart1, (uint8_t *)get_time_stamp_command, 19,19);
 	uint32_t start_ritorno = __HAL_TIM_GET_COUNTER(&htim16);
 	HAL_UART_Receive(&huart1, (uint8_t *)&ts_time_stamp_buffer, 50,500);
+	//HAL_UART_Receive_IT(&huart1, (uint8_t *)&ts_time_stamp_buffer, 50,500);
+	//HAL_UART_Receive_IT(&huart1, (uint8_t *)&ts_time_stamp_buffer, 43);
 	time_stamp_TS_buffer=ts_time_stamp_buffer;
 	uint32_t end_ritorno = __HAL_TIM_GET_COUNTER(&htim16);
 	uint32_t time_ritorno = end_ritorno - start_ritorno;
-	int32_t delta_time=time_andata-time_ritorno;
-	HAL_Delay(2*delta_time); // HAL_TIM_16 conta 0.5ms
+	uint32_t delta_time=time_andata-time_ritorno;
+	printf("time_andata=%i time_ritorno=%i start_ritorno=%i end_ritorno=%i Delta=%i   \n" , time_andata,time_ritorno,start_ritorno,end_ritorno,delta_time);
+
+	HAL_Delay(delta_time); // HAL_TIM_16 conta 0.5ms
 	send_complete_time_stamp(time_stamp_TS_buffer);
-	int32_t time_ritorno_compensato=time_ritorno+delta_time;
+	uint32_t time_ritorno_compensato=time_ritorno+delta_time;
 	//printf("Tempo di andata=%i  Tempo di ritorno= %i  delta_time=%i  tempo_rit_comp=%i" , time_andata,time_ritorno,delta_time, time_ritorno_compensato);
 	time_ts.a=time_andata;
 	time_ts.b=time_ritorno;

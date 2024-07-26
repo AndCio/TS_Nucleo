@@ -104,6 +104,8 @@ extern char 	*nuc_time_stamp;
 extern char 	*complete_time_stamp;
 extern char 	*time_stamp_TS_buffer;
 extern char 	stop_stream_command;
+extern uint8_t  ts_time_stamp_buffer[50];
+extern uint32_t start_ritorno;
 
 //char 	zero_buffer[UART_BUFFER_SIZE];
 int 	stream_started_flag, saving_data_flag, start_stream_flag,measure_finished_flag=0;
@@ -134,6 +136,7 @@ volatile uint16_t read_index = 0;  // Indice di lettura del buffer circolare
 uint8_t uart_data;
 uint8_t buffer_index = 0;
 uint8_t data_changed = 0;
+int first_byte_received_of_time_stamp=0;
 
 //char a
 //char *tx_usb;
@@ -183,7 +186,7 @@ int main(void)
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
 
-  HAL_TIM_Base_Start(&htim16); //START TIMER
+
   int num_file=0;
   int open_new_file=1;
   int nuc_connection=1;
@@ -300,6 +303,7 @@ int main(void)
 		  machine_state=3;
 	  	  }
 	  if (get_time_stamp_flag==1){
+		  HAL_TIM_Base_Start(&htim16); //START TIMER
 		  ForTime value= get_TS_time_stamp();
 		  printf("Tempo di andata=%i  Tempo di ritorno= %i  delta_time=%i  tempo_rit_comp=%i \n" , value.a,value.b,value.c, value.d);
 		  //fputs("Tempo di andata= \n",&fil);
@@ -770,7 +774,19 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
+void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
+{
+    // Check if it's the first byte received
+    if (first_byte_received_of_time_stamp == 0)
+    {
+    	first_byte_received_of_time_stamp = 1;
+    	//start_ritorno = __HAL_TIM_GET_COUNTER(&htim16);
+        //first_byte_timestamp = HAL_GetTick();  // Get the timestamp (in milliseconds since HAL initialization)
+    }
 
+    // Continue with normal data processing
+    HAL_UART_Receive_IT(&huart1, (uint8_t *)&ts_time_stamp_buffer, 43);
+}
 
 void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef *huart, uint16_t Size) {
 	if (huart->Instance == USART1) {  // Controlla che sia la tua UART
